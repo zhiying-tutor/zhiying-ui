@@ -16,49 +16,14 @@
   <!-- Babel Standalone for JSX -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.4/babel.min.js"></script>
 
-  <style>
+    <link rel="stylesheet" href="variables.css" />
+
+<style>
     /* =============================================
        N2W Design System — CSS Tokens
        ============================================= */
-    :root {
-      /* === 基础 === */
-      --bg-canvas: #FFFDF4;
-      --text-primary: #2C1608;
-      --text-heading: #BE8944;
-
-      /* === N2W 蓝色梯度 === */
+        :root {
       --blue: #0085FF;
-      --blue-light: #8CC0F8;
-      --blue-lighter: #C8E2FF;
-      --blue-mist: #E7F4FF;
-
-      /* === N2W 黄色梯度 === */
-      --yellow: #FFE083;
-      --yellow-light: #FFECB3;
-      --yellow-lighter: #FFF6DB;
-      --yellow-mist: #FFFBED;
-
-      /* === N2W 橙色梯度 === */
-      --orange: #FCAC7D;
-      --orange-light: #FDBC97;
-      --orange-lighter: #FBD9C4;
-      --orange-mist: #F9EBE4;
-
-      /* === 项目棕色层次 === */
-      --brown-gold: #BE8944;      /* 项目灵魂色 */
-      --brown-light: #C4A882;     /* 边框/分隔线 */
-      --brown-medium: #8B6347;    /* 次级标题/标签 */
-      --brown-dark: #5C3D2E;      /* hover加深 */
-      --brown-deep: #271307;      /* = text-primary，正文色 */
-
-      /* === 警告 === */
-      --warn-bg: #FBDDD6;
-      --warn-text: #C84A2B;
-
-      /* === 微拟态阴影 === */
-      --shadow-soft: 6px 6px 12px rgba(228, 200, 166, 0.3), -6px -6px 12px rgba(255, 255, 255, 0.8);
-      --shadow-hover: 8px 8px 16px rgba(228, 200, 166, 0.4), -8px -8px 16px rgba(255, 255, 255, 0.9);
-      --shadow-inner: inset 4px 4px 8px rgba(228, 200, 166, 0.3), inset -4px -4px 8px rgba(255, 255, 255, 0.8);
     }
 
     /* =============================================
@@ -121,13 +86,13 @@
     }
 
     @keyframes pulse-glow-blue {
-      0%, 100% { box-shadow: 0 0 20px rgba(140, 192, 248, 0.2); }
-      50% { box-shadow: 0 0 40px rgba(140, 192, 248, 0.45); }
+      0%, 100% { box-shadow: 0 0 20px rgba(var(--blue-light-rgb), 0.2); }
+      50% { box-shadow: 0 0 40px rgba(var(--blue-light-rgb), 0.45); }
     }
 
     @keyframes pulse-glow-yellow {
-      0%, 100% { box-shadow: 0 0 20px rgba(255, 224, 131, 0.25); }
-      50% { box-shadow: 0 0 40px rgba(255, 224, 131, 0.5); }
+      0%, 100% { box-shadow: 0 0 20px rgba(var(--yellow-rgb), 0.25); }
+      50% { box-shadow: 0 0 40px rgba(var(--yellow-rgb), 0.5); }
     }
 
     @keyframes spinner {
@@ -149,10 +114,10 @@
       justify-content: center;
       /* N2W 三色渐变：橙 → 黄 → 蓝（增强可见度） */
       background: linear-gradient(135deg, 
-        rgba(251, 180, 138, 0.35) 0%,      /* N2W 橙 */
-        rgba(251, 224, 143, 0.4) 35%,     /* N2W 黄 */
-        rgba(247, 251, 199, 0.38) 55%,     /* N2W 黄浅 - 过渡 */
-        rgba(131, 191, 254, 0.3) 100%);   /* N2W 蓝 */
+        rgba(var(--orange-highlight-rgb), 0.35) 0%,      /* N2W 橙 */
+        rgba(var(--yellow-rgb), 0.4) 35%,     /* N2W 黄 */
+        rgba(var(--yellow-soft-rgb), 0.38) 55%,     /* N2W 黄浅 - 过渡 */
+        rgba(var(--blue-glow-rgb), 0.3) 100%);   /* N2W 蓝 */
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       z-index: 9999;
@@ -171,7 +136,7 @@
     .blob-orange {
       width: 450px;
       height: 450px;
-      background: radial-gradient(circle, rgba(252, 172, 125, 0.18) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(var(--orange-rgb), 0.18) 0%, transparent 70%);
       top: -120px;
       right: -80px;
       animation: float1 8s ease-in-out infinite;
@@ -180,7 +145,7 @@
     .blob-blue {
       width: 400px;
       height: 400px;
-      background: radial-gradient(circle, rgba(140, 192, 248, 0.15) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(var(--blue-light-rgb), 0.15) 0%, transparent 70%);
       bottom: -100px;
       left: -60px;
       animation: float2 10s ease-in-out infinite;
@@ -190,7 +155,7 @@
       width: 420px;
       height: 420px;
       /* 增大黄色 blob 可见度 */
-      background: radial-gradient(circle, rgba(255, 224, 131, 0.22) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(var(--yellow-rgb), 0.22) 0%, transparent 70%);
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -204,7 +169,7 @@
       position: relative;
       width: min(480px, calc(100vw - 48px));
       border-radius: 24px;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(var(--white-rgb), 0.85);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       box-shadow: var(--shadow-soft);
@@ -219,7 +184,7 @@
     /* Top accent gradient bar */
     .accent-bar {
       height: 4px;
-      background: linear-gradient(90deg, #FCAC7D 0%, #FFE083 50%, #8CC0F8 100%);
+      background: linear-gradient(90deg, var(--orange) 0%, var(--yellow) 50%, var(--blue-light) 100%);
       width: 100%;
     }
 
@@ -294,8 +259,8 @@
       width: calc(50% - 6px);
       height: calc(100% - 8px);
       border-radius: 9999px;
-      background: linear-gradient(135deg, #FDBC97 0%, #FCAC7D 100%);
-      box-shadow: 0 2px 8px rgba(252, 172, 125, 0.35);
+      background: linear-gradient(135deg, var(--orange-light) 0%, var(--orange) 100%);
+      box-shadow: 0 2px 8px rgba(var(--orange-rgb), 0.35);
       transition: left 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -322,7 +287,7 @@
     }
 
     .tab-btn[data-active="true"] {
-      color: #fff;
+      color: var(--white);
     }
 
     .tab-btn[data-active="false"] {
@@ -407,7 +372,7 @@
     .auth-input:focus {
       /* 使用黄色边框，让 N2W 黄色更突出 */
       border-color: var(--yellow);
-      box-shadow: var(--shadow-inner), 0 0 0 3px rgba(255, 224, 131, 0.18);
+      box-shadow: var(--shadow-inner), 0 0 0 3px rgba(var(--yellow-rgb), 0.18);
     }
 
     .auth-input:focus + .input-icon-left,
@@ -433,7 +398,7 @@
 
     .pwd-toggle:hover {
       color: var(--brown-dark);
-      background: rgba(196, 168, 130, 0.1);
+      background: rgba(var(--border-strong-rgb), 0.1);
     }
 
     /* =============================================
@@ -453,7 +418,7 @@
       font-weight: 700;
       letter-spacing: 0.3px;
       cursor: pointer;
-      box-shadow: 0 4px 16px rgba(252, 172, 125, 0.35);
+      box-shadow: 0 4px 16px rgba(var(--orange-rgb), 0.35);
       transition: all 220ms ease;
       display: flex;
       align-items: center;
@@ -462,15 +427,15 @@
     }
 
     .submit-btn:hover:not(:disabled) {
-      background: linear-gradient(135deg, #FDBC97 0%, #FCAC7D 100%);
-      box-shadow: 0 6px 24px rgba(252, 172, 125, 0.45);
+      background: linear-gradient(135deg, var(--orange-light) 0%, var(--orange) 100%);
+      box-shadow: 0 6px 24px rgba(var(--orange-rgb), 0.45);
       transform: translateY(-1px);
     }
 
     .submit-btn:active:not(:disabled) {
       transform: translateY(0);
-      box-shadow: 0 2px 8px rgba(252, 172, 125, 0.25);
-      background: linear-gradient(135deg, #FDBC97 0%, #FCAC7D 100%);
+      box-shadow: 0 2px 8px rgba(var(--orange-rgb), 0.25);
+      background: linear-gradient(135deg, var(--orange-light) 0%, var(--orange) 100%);
     }
 
     .submit-btn:disabled {
@@ -482,8 +447,8 @@
     .btn-spinner {
       width: 18px;
       height: 18px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      border-top-color: #fff;
+      border: 2px solid rgba(var(--white-rgb), 0.3);
+      border-top-color: var(--white);
       border-radius: 50%;
       animation: spinner 0.7s linear infinite;
     }
@@ -521,7 +486,7 @@
     }
 
     .auth-footer a {
-      color: #e99b6e;
+      color: var(--link-cta);
       text-decoration: none;
       font-weight: 600;
       cursor: pointer;
@@ -529,7 +494,7 @@
     }
 
     .auth-footer a:hover {
-      color: #da824f;
+      color: var(--link-hover);
       text-decoration: underline;
     }
 
@@ -546,7 +511,7 @@
       flex: 1;
       height: 3px;
       border-radius: 2px;
-      background: rgba(196, 168, 130, 0.2);
+      background: rgba(var(--border-strong-rgb), 0.2);
       transition: background 300ms ease;
     }
 
@@ -609,9 +574,9 @@
       if (/[0-9]/.test(pwd)) score++;
       if (/[^A-Za-z0-9]/.test(pwd)) score++;
 
-      if (score <= 2) return { level: 1, text: '弱', color: '#E07A5F' };
-      if (score <= 3) return { level: 2, text: '中等', color: '#E89B6C' };
-      return { level: 3, text: '强', color: '#6B9B5A' };
+      if (score <= 2) return { level: 1, text: '弱', color: 'var(--password-weak)' };
+      if (score <= 3) return { level: 2, text: '中等', color: 'var(--password-medium)' };
+      return { level: 3, text: '强', color: 'var(--password-strong)' };
     }
 
     /* =============================================
@@ -711,7 +676,7 @@
 
               {/* Header */}
               <div className="auth-header">
-                <h2 className="auth-title">Auth Gateway</h2>
+                <h2 className="auth-title">智映通学</h2>
                 <p className="auth-subtitle">{title}</p>
               </div>
 

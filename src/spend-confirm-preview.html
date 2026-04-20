@@ -7,44 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="variables.css" />
 <style>
-:root {
-  --bg-canvas: #fffdf4;
-  --text-primary: #2c1608;
-  --text-heading: #be8944;
-  --blue: #0066cc;
-  --blue-light: #8cc0f8;
-  --blue-lighter: #c8e2ff;
-  --blue-mist: #e7f4ff;
-  --yellow: #ffe083;
-  --yellow-light: #ffecb3;
-  --yellow-lighter: #fff6db;
-  --yellow-mist: #fffbed;
-  --orange: #fcac7d;
-  --orange-light: #fdbc97;
-  --orange-lighter: #fbd9c4;
-  --orange-mist: #f9ebe4;
-  --purple: #a58bc2;
-  --purple-light: #d1c1e0;
-  --purple-lighter: #eaddf5;
-  --purple-mist: #f6f2fa;
-  --green: #5eb69d;
-  --green-light: #9fd8c8;
-  --green-lighter: #d1eee5;
-  --green-mist: #eaf8f3;
-  --brown-gold: #be8944;
-  --brown-light: #c4a882;
-  --brown-medium: #8b6347;
-  --brown-dark: #5c3d2e;
-  --brown-deep: #271307;
-  --warn-bg: #fbddd6;
-  --warn-text: #c84a2b;
-  --success-bg: #effce3;
-  --success-text: #478211;
-  --shadow-soft: 6px 6px 12px rgba(228,200,166,0.3), -6px -6px 12px rgba(255,255,255,0.8);
-  --shadow-hover: 8px 8px 16px rgba(228,200,166,0.4), -8px -8px 16px rgba(255,255,255,0.9);
-  --shadow-inner: inset 4px 4px 8px rgba(228,200,166,0.3), inset -4px -4px 8px rgba(255,255,255,0.8);
-}
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: 'Inter', system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif;
@@ -70,8 +34,8 @@ body {
   100% { transform: scale(1); opacity: 1; }
 }
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(255,224,131,0.25); }
-  50% { box-shadow: 0 0 40px rgba(255,224,131,0.5); }
+  0%, 100% { box-shadow: 0 0 20px rgba(var(--yellow-rgb), 0.25); }
+  50% { box-shadow: 0 0 40px rgba(var(--yellow-rgb), 0.5); }
 }
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
@@ -85,7 +49,7 @@ body {
 .spend-overlay {
   position: fixed; inset: 0;
   display: flex; align-items: center; justify-content: center;
-  background: rgba(255, 253, 244, 0.8);
+  background: rgba(var(--surface-soft-rgb), 0.8);
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
   z-index: 9999;
   animation: fadeIn 0.4s ease;
@@ -94,7 +58,7 @@ body {
   position: relative;
   width: min(480px, calc(100vw - 48px));
   border-radius: 24px;
-  background: rgba(255,255,255,0.85);
+  background: rgba(var(--white-rgb), 0.85);
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   box-shadow: var(--shadow-soft);
   overflow: hidden;
@@ -102,7 +66,7 @@ body {
 }
 .accent-bar {
   height: 4px;
-  background: linear-gradient(90deg, #fcac7d 0%, #ffe083 50%, #8cc0f8 100%);
+  background: linear-gradient(90deg, var(--orange) 0%, var(--yellow) 50%, var(--blue-light) 100%);
 }
 .card-content {
   padding: 36px 36px 32px;
@@ -111,16 +75,16 @@ body {
 .close-btn {
   position: absolute; top: 20px; right: 20px;
   background: var(--bg-canvas);
-  border: 1.5px solid rgba(196,168,130,0.25);
+  border: 1.5px solid rgba(var(--border-muted-rgb), 0.25);
   border-radius: 50%; width: 36px; height: 36px;
   cursor: pointer; display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 2px 8px rgba(196,168,130,0.15);
+  box-shadow: 0 2px 8px rgba(var(--border-muted-rgb), 0.15);
   transition: all 0.2s ease; z-index: 10;
 }
 .close-btn:hover {
   transform: rotate(90deg) scale(1.1);
   border-color: var(--orange-light);
-  box-shadow: 0 4px 12px rgba(252,172,125,0.25);
+  box-shadow: 0 4px 12px rgba(var(--orange-rgb), 0.25);
 }
 
 /* ========== Modal Icon ========== */
@@ -133,7 +97,7 @@ body {
 }
 .modal-icon.gold { background: linear-gradient(135deg, var(--yellow-lighter), var(--yellow)); }
 .modal-icon.diamond { background: linear-gradient(135deg, var(--blue-mist), var(--blue-lighter)); }
-.modal-icon.warn { background: linear-gradient(135deg, #fbddd6, #f8b4a0); }
+.modal-icon.warn { background: linear-gradient(135deg, var(--warn-bg), var(--peach-soft)); }
 .modal-icon.exchange { background: linear-gradient(135deg, var(--purple-mist), var(--purple-lighter)); }
 
 .modal-title {
@@ -150,7 +114,7 @@ body {
   display: flex; align-items: center; gap: 16px;
   padding: 10px 20px; border-radius: 14px;
   background: var(--bg-canvas);
-  border: 1.5px solid rgba(196,168,130,0.15);
+  border: 1.5px solid rgba(var(--border-muted-rgb), 0.15);
   box-shadow: var(--shadow-inner);
   width: 100%;
   justify-content: center;
@@ -163,7 +127,7 @@ body {
 .balance-item .bal-num { font-variant-numeric: tabular-nums; }
 .balance-divider {
   width: 1px; height: 20px;
-  background: rgba(196,168,130,0.25);
+  background: rgba(var(--border-muted-rgb), 0.25);
 }
 
 /* ========== Cost Chip (reward-chip style) ========== */
@@ -176,25 +140,25 @@ body {
 .cost-chip:hover { transform: translateY(-2px); }
 .cost-chip.gold-cost {
   background: linear-gradient(135deg, var(--yellow-mist) 0%, var(--yellow-lighter) 100%);
-  border: 1.5px solid rgba(255,224,131,0.4);
-  box-shadow: 0 4px 12px rgba(255,224,131,0.2);
+  border: 1.5px solid rgba(var(--yellow-rgb), 0.4);
+  box-shadow: 0 4px 12px rgba(var(--yellow-rgb), 0.2);
 }
 .cost-chip.diamond-cost {
   background: linear-gradient(135deg, var(--blue-mist) 0%, var(--blue-lighter) 100%);
-  border: 1.5px solid rgba(140,192,248,0.3);
-  box-shadow: 0 4px 12px rgba(140,192,248,0.2);
+  border: 1.5px solid rgba(var(--blue-light-rgb), 0.3);
+  box-shadow: 0 4px 12px rgba(var(--blue-light-rgb), 0.2);
 }
 .cost-chip.warn-cost {
-  background: linear-gradient(135deg, #fbddd6 0%, #fce8e2 100%);
-  border: 1.5px solid rgba(200,74,43,0.2);
-  box-shadow: 0 4px 12px rgba(200,74,43,0.1);
+  background: linear-gradient(135deg, var(--warn-bg) 0%, var(--rose-surface) 100%);
+  border: 1.5px solid rgba(var(--danger-muted-rgb), 0.2);
+  box-shadow: 0 4px 12px rgba(var(--danger-muted-rgb), 0.1);
 }
 .chip-icon { font-size: 28px; animation: bounceNumber 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.4s both; }
 .chip-amount {
   font-size: 26px; font-weight: 900; letter-spacing: -0.5px;
   animation: bounceNumber 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.55s both;
 }
-.chip-amount.gold-num { color: #d4a017; }
+.chip-amount.gold-num { color: var(--gold-rich); }
 .chip-amount.diamond-num { color: var(--blue); }
 .chip-amount.warn-num { color: var(--warn-text); }
 .chip-label {
@@ -238,22 +202,22 @@ body {
 .btn-confirm {
   background: linear-gradient(135deg, var(--yellow) 0%, var(--orange) 100%);
   color: var(--brown-dark);
-  box-shadow: 0 4px 16px rgba(252,172,125,0.35);
+  box-shadow: 0 4px 16px rgba(var(--orange-rgb), 0.35);
 }
 .btn-confirm:hover {
-  background: linear-gradient(135deg, #fdbc97 0%, #fcac7d 100%);
-  box-shadow: 0 6px 24px rgba(252,172,125,0.45);
+  background: linear-gradient(135deg, var(--orange-light) 0%, var(--orange) 100%);
+  box-shadow: 0 6px 24px rgba(var(--orange-rgb), 0.45);
   transform: translateY(-1px);
 }
 .btn-confirm:active { transform: translateY(0); }
 .btn-cancel {
   background: var(--bg-canvas);
   color: var(--brown-medium);
-  border: 2px solid rgba(196,168,130,0.25);
+  border: 2px solid rgba(var(--border-muted-rgb), 0.25);
 }
 .btn-cancel:hover {
-  border-color: rgba(196,168,130,0.4);
-  background: #fff;
+  border-color: rgba(var(--border-muted-rgb), 0.4);
+  background: var(--white);
 }
 .btn-action-diamond {
   flex: 1; height: 48px; border: none; border-radius: 9999px;
@@ -261,11 +225,11 @@ body {
   cursor: pointer; transition: all 220ms ease;
   display: flex; align-items: center; justify-content: center; gap: 6px;
   background: linear-gradient(135deg, var(--blue-mist) 0%, var(--blue-lighter) 100%);
-  color: #3d7ec7;
-  box-shadow: 0 4px 16px rgba(140,192,248,0.25);
+  color: var(--blue-strong);
+  box-shadow: 0 4px 16px rgba(var(--blue-light-rgb), 0.25);
 }
 .btn-action-diamond:hover {
-  box-shadow: 0 6px 24px rgba(140,192,248,0.35);
+  box-shadow: 0 6px 24px rgba(var(--blue-light-rgb), 0.35);
   transform: translateY(-1px);
 }
 .btn-action-gold {
@@ -275,10 +239,10 @@ body {
   display: flex; align-items: center; justify-content: center; gap: 6px;
   background: linear-gradient(135deg, var(--yellow-lighter) 0%, var(--yellow) 100%);
   color: var(--brown-dark);
-  box-shadow: 0 4px 16px rgba(255,224,131,0.35);
+  box-shadow: 0 4px 16px rgba(var(--yellow-rgb), 0.35);
 }
 .btn-action-gold:hover {
-  box-shadow: 0 6px 24px rgba(255,224,131,0.45);
+  box-shadow: 0 6px 24px rgba(var(--yellow-rgb), 0.45);
   transform: translateY(-1px);
 }
 
@@ -299,7 +263,7 @@ body {
   display: flex; align-items: center; gap: 12px;
   padding: 16px; border-radius: 16px;
   background: var(--bg-canvas);
-  border: 1.5px solid rgba(196,168,130,0.15);
+  border: 1.5px solid rgba(var(--border-muted-rgb), 0.15);
   width: 100%;
 }
 .exchange-side {
@@ -314,7 +278,7 @@ body {
 }
 .qty-btn {
   width: 36px; height: 36px; border-radius: 50%;
-  border: 2px solid rgba(196,168,130,0.25);
+  border: 2px solid rgba(var(--border-muted-rgb), 0.25);
   background: var(--bg-canvas);
   font-size: 18px; font-weight: 800; color: var(--brown-dark);
   cursor: pointer; display: flex; align-items: center; justify-content: center;
@@ -338,7 +302,7 @@ body {
 .demo-section-title {
   font-size: 20px; font-weight: 800; color: var(--brown-dark);
   display: flex; align-items: center; gap: 8px;
-  padding-bottom: 12px; border-bottom: 2px solid rgba(196,168,130,0.15);
+  padding-bottom: 12px; border-bottom: 2px solid rgba(var(--border-muted-rgb), 0.15);
 }
 .demo-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
@@ -356,33 +320,33 @@ body {
 .demo-btn:active { transform: translateY(0); }
 .demo-btn.gold-btn {
   background: linear-gradient(135deg, var(--yellow-mist), var(--yellow-lighter));
-  color: var(--brown-dark); border-color: rgba(255,224,131,0.3);
+  color: var(--brown-dark); border-color: rgba(var(--yellow-rgb), 0.3);
 }
 .demo-btn.diamond-btn {
   background: linear-gradient(135deg, var(--blue-mist), var(--blue-lighter));
-  color: var(--brown-dark); border-color: rgba(140,192,248,0.3);
+  color: var(--brown-dark); border-color: rgba(var(--blue-light-rgb), 0.3);
 }
 .demo-btn.warn-btn {
-  background: linear-gradient(135deg, #fce8e2, #fbddd6);
-  color: var(--brown-dark); border-color: rgba(200,74,43,0.15);
+  background: linear-gradient(135deg, var(--rose-surface), var(--warn-bg));
+  color: var(--brown-dark); border-color: rgba(var(--danger-muted-rgb), 0.15);
 }
 .demo-btn.purple-btn {
   background: linear-gradient(135deg, var(--purple-mist), var(--purple-lighter));
-  color: var(--brown-dark); border-color: rgba(165,139,194,0.3);
+  color: var(--brown-dark); border-color: rgba(var(--purple-rgb), 0.3);
 }
 .demo-btn.mixed-btn {
   background: linear-gradient(135deg, var(--orange-mist), var(--orange-lighter));
-  color: var(--brown-dark); border-color: rgba(252,172,125,0.3);
+  color: var(--brown-dark); border-color: rgba(var(--orange-rgb), 0.3);
 }
 .demo-btn-icon {
   width: 32px; height: 32px; border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 18px; background: rgba(255,255,255,0.6); flex-shrink: 0;
+  font-size: 18px; background: rgba(var(--white-rgb), 0.6); flex-shrink: 0;
 }
 .page-header { text-align: center; padding: 48px 24px 0; }
 .page-header h1 {
   font-size: 32px; font-weight: 900;
-  background: linear-gradient(135deg, var(--brown-dark) 0%, #da8855 100%);
+  background: linear-gradient(135deg, var(--brown-dark) 0%, var(--accent-warm) 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   margin-bottom: 8px;
 }
@@ -709,7 +673,7 @@ function renderExchange(s) {
   h += balanceBarHTML();
 
   h += '<div class="exchange-row">';
-  h += '<div class="exchange-side"><span class="ex-icon">🪙</span><span class="ex-num" id="exGoldNum" style="color:#d4a017">-30</span><span class="ex-label">消耗金币</span></div>';
+  h += '<div class="exchange-side"><span class="ex-icon">🪙</span><span class="ex-num" id="exGoldNum" style="color:var(--gold-rich)">-30</span><span class="ex-label">消耗金币</span></div>';
   h += '<span class="exchange-arrow">➜</span>';
   h += '<div class="exchange-side"><span class="ex-icon">💎</span><span class="ex-num" id="exDiamondNum" style="color:var(--blue)">+1</span><span class="ex-label">获得钻石</span></div>';
   h += '</div>';

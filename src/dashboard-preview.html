@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard 流星主控台 · AI个性化学习助手</title>
+    <title>Dashboard 流星主控台 · 智映通学讲解系统</title>
 
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,6 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./variables.css" />
 
     <!-- React 18 CDN -->
     <script
@@ -26,63 +27,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.4/babel.min.js"></script>
 
     <style>
-      :root {
-        /* 严格应用指定的配色体系 */
-        --bg-canvas: #fffdf4;
-        --text-primary: #2c1608;
-        --text-heading: #be8944;
-
-        --blue: #0066cc;
-        --blue-light: #8cc0f8;
-        --blue-lighter: #c8e2ff;
-        --blue-mist: #e7f4ff;
-
-        --yellow: #ffe083;
-        --yellow-light: #ffecb3;
-        --yellow-lighter: #fff6db;
-        --yellow-mist: #fffbed;
-
-        --orange: #fcac7d;
-        --orange-light: #fdbc97;
-        --orange-lighter: #fbd9c4;
-        --orange-mist: #f9ebe4;
-
-        --chat-orange-surface: #fbd9c4;
-        --chat-orange-accent: #ffcdad;
-        --chat-yellow-surface: #ffecb3;
-        --chat-yellow-accent: #fee48d;
-
-        --purple: #a58bc2;
-        --purple-light: #d1c1e0;
-        --purple-lighter: #eaddf5;
-        --purple-mist: #f6f2fa;
-
-        --green: #5eb69d;
-        --green-light: #9fd8c8;
-        --green-lighter: #d1eee5;
-        --green-mist: #eaf8f3;
-
-        --brown-gold: #be8944;
-        --brown-light: #c4a882;
-        --brown-medium: #8b6347;
-        --brown-dark: #5c3d2e;
-        --brown-deep: #271307;
-
-        --warn-bg: #fbddd6;
-        --warn-text: #c84a2b;
-        --success-bg: #effce3;
-        --success-text: #478211;
-
-        --shadow-soft:
-          6px 6px 12px rgba(228, 200, 166, 0.3),
-          -6px -6px 12px rgba(255, 255, 255, 0.8);
-        --shadow-hover:
-          8px 8px 16px rgba(228, 200, 166, 0.4),
-          -8px -8px 16px rgba(255, 255, 255, 0.9);
-        --shadow-inner:
-          inset 4px 4px 8px rgba(228, 200, 166, 0.3),
-          inset -4px -4px 8px rgba(255, 255, 255, 0.8);
-      }
+      /* `:root` 变量已通过 variables.css 统一管理 */
 
       * {
         box-sizing: border-box;
@@ -112,11 +57,11 @@
         background: transparent;
       }
       ::-webkit-scrollbar-thumb {
-        background: #e4c8a6;
+        background: var(--border-muted);
         border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #c4a882;
+        background: var(--border-strong);
       }
 
       /* === 基础版式布局 === */
@@ -141,10 +86,10 @@
         flex: 0 0 30vw;
         min-width: 320px;
         max-width: 450px;
-        border-left: 2px solid rgba(196, 168, 130, 0.15);
+        border-left: 2px solid rgba(var(--border-muted-rgb), 0.15);
         display: flex;
         flex-direction: column;
-        background: rgba(255, 253, 244, 0.6);
+        background: rgba(var(--surface-soft-rgb), 0.6);
         backdrop-filter: blur(12px);
       }
 
@@ -160,10 +105,10 @@
         font-size: 48px;
         font-weight: 900;
         margin-bottom: 32px;
-        background: linear-gradient(135deg, var(--brown-dark) 0%, #da8855 100%);
+        background: linear-gradient(135deg, var(--brown-dark) 0%, var(--accent-warm) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        text-shadow: 0 4px 12px rgba(190, 137, 68, 0.2);
+        text-shadow: 0 4px 12px rgba(var(--brown-gold-rgb), 0.2);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -176,7 +121,7 @@
         margin-left: 4px;
         font-weight: 400;
         -webkit-text-fill-color: var(--orange);
-        text-shadow: 0 0 10px rgba(252, 172, 125, 0.5);
+        text-shadow: 0 0 10px rgba(var(--orange-rgb), 0.5);
       }
       @keyframes blink {
         0%,
@@ -226,15 +171,15 @@
         border-radius: 20px;
         border: 2px solid transparent;
         background:
-          linear-gradient(rgba(255, 253, 244, 0.95), rgba(255, 253, 244, 0.95))
+          linear-gradient(rgba(var(--surface-soft-rgb), 0.95), rgba(var(--surface-soft-rgb), 0.95))
             padding-box,
           linear-gradient(135deg, var(--yellow-light), var(--orange-light))
             border-box;
         backdrop-filter: blur(10px);
         box-shadow:
-          inset 2px 2px 6px rgba(196, 168, 130, 0.1),
-          inset -2px -2px 6px rgba(255, 255, 255, 0.8),
-          0 4px 12px rgba(196, 168, 130, 0.15);
+          inset 2px 2px 6px rgba(var(--border-muted-rgb), 0.1),
+          inset -2px -2px 6px rgba(var(--white-rgb), 0.8),
+          0 4px 12px rgba(var(--border-muted-rgb), 0.15);
         display: flex;
         align-items: center;
         transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
@@ -243,12 +188,12 @@
       }
       .search-wrapper:focus-within .search-container-inner {
         background:
-          linear-gradient(#fff, #fff) padding-box,
+          linear-gradient(var(--white), var(--white)) padding-box,
           linear-gradient(135deg, var(--yellow), var(--orange)) border-box;
         box-shadow:
-          inset 2px 2px 4px rgba(196, 168, 130, 0.05),
-          inset -2px -2px 4px rgba(255, 255, 255, 0.9),
-          0 8px 24px rgba(255, 224, 131, 0.3);
+          inset 2px 2px 4px rgba(var(--border-muted-rgb), 0.05),
+          inset -2px -2px 4px rgba(var(--white-rgb), 0.9),
+          0 8px 24px rgba(var(--yellow-rgb), 0.3);
         transform: scale(1.02);
       }
 
@@ -263,7 +208,7 @@
         font-weight: 600;
         color: var(--brown-medium);
         cursor: pointer;
-        border-right: 1px solid rgba(196, 168, 130, 0.3);
+        border-right: 1px solid rgba(var(--border-muted-rgb), 0.3);
         transition: color 0.3s ease;
         user-select: none;
         min-width: 90px;
@@ -293,12 +238,12 @@
         top: calc(100% + 8px);
         left: 0;
         border-radius: 16px;
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(var(--white-rgb), 0.95);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         box-shadow:
-          0 8px 32px rgba(139, 99, 71, 0.12),
-          0 2px 8px rgba(139, 99, 71, 0.08);
+          0 8px 32px rgba(var(--brown-medium-rgb), 0.12),
+          0 2px 8px rgba(var(--brown-medium-rgb), 0.08);
         border: 1.5px solid var(--yellow-light);
         z-index: 101;
         min-width: 110px;
@@ -381,12 +326,12 @@
         left: 0;
         width: 100%;
         border-radius: 16px;
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(var(--white-rgb), 0.95);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         box-shadow:
-          0 8px 32px rgba(139, 99, 71, 0.12),
-          0 2px 8px rgba(139, 99, 71, 0.08);
+          0 8px 32px rgba(var(--brown-medium-rgb), 0.12),
+          0 2px 8px rgba(var(--brown-medium-rgb), 0.08);
         border: 1.5px solid var(--yellow-light);
         z-index: 100;
         display: flex;
@@ -443,7 +388,7 @@
         font-weight: 600;
         width: 50px;
         text-align: center;
-        background: rgba(196, 168, 130, 0.15);
+        background: rgba(var(--border-muted-rgb), 0.15);
         border-radius: 4px;
         padding: 2px 4px;
         margin-right: 12px;
@@ -480,8 +425,8 @@
         align-items: center;
         justify-content: center;
         transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))
-          drop-shadow(0 2px 4px rgba(196, 168, 130, 0.2));
+        filter: drop-shadow(0 4px 6px rgba(var(--black-rgb), 0.1))
+          drop-shadow(0 2px 4px rgba(var(--border-muted-rgb), 0.2));
       }
       .star-icon:hover {
         transform: scale(1.1);
@@ -496,13 +441,13 @@
         -webkit-mask-repeat: no-repeat;
         -webkit-mask-position: center;
         -webkit-mask-size: cover;
-        filter: drop-shadow(0 4px 6px rgba(196, 168, 130, 0.4))
-          drop-shadow(0 2px 4px rgba(196, 168, 130, 0.2));
+        filter: drop-shadow(0 4px 6px rgba(var(--border-muted-rgb), 0.4))
+          drop-shadow(0 2px 4px rgba(var(--border-muted-rgb), 0.2));
       }
       .star-gradient-bg {
         position: absolute;
         inset: 0;
-        background: #e8ded1;
+        background: var(--surface-muted);
         transition: background 0.5s;
       }
       .star-fill-overlay {
@@ -536,7 +481,7 @@
         font-size: 11px;
         font-weight: 700;
         line-height: 1;
-        color: rgba(92, 61, 46, 0.6); /* --brown-dark 弱化 */
+        color: rgba(var(--brown-dark-rgb), 0.6); /* --brown-dark 弱化 */
         text-transform: uppercase;
       }
       .star-inner-num {
@@ -547,7 +492,7 @@
       }
       .locked .star-inner-day,
       .locked .star-inner-num {
-        color: rgba(196, 168, 130, 0.8); /* --brown-light */
+        color: rgba(var(--border-muted-rgb), 0.8); /* --brown-light */
       }
 
       .day-label {
@@ -580,12 +525,12 @@
       .task-pill {
         height: 52px;
         background:
-          linear-gradient(rgba(255, 253, 244, 0.85), rgba(255, 253, 244, 0.85))
+          linear-gradient(rgba(var(--surface-soft-rgb), 0.85), rgba(var(--surface-soft-rgb), 0.85))
             padding-box,
           linear-gradient(
               135deg,
-              rgba(255, 224, 131, 0.4),
-              rgba(252, 172, 125, 0.2)
+              rgba(var(--yellow-rgb), 0.4),
+              rgba(var(--orange-rgb), 0.2)
             )
             border-box;
         backdrop-filter: blur(8px);
@@ -596,11 +541,11 @@
         align-items: center;
         gap: 12px;
         box-shadow:
-          0 1px 3px rgba(196, 168, 130, 0.15),
-          0 1px 2px rgba(196, 168, 130, 0.1);
+          0 1px 3px rgba(var(--border-muted-rgb), 0.15),
+          0 1px 2px rgba(var(--border-muted-rgb), 0.1);
         font-size: 15px;
         font-weight: 600;
-        color: var(--brown-dark); /* 修改为深棕色 #5c3d2e */
+        color: var(--brown-dark); /* 修改为深棕色 var(--brown-dark) */
         cursor: pointer;
         transition: all 0.3s ease;
         position: relative;
@@ -611,40 +556,40 @@
 
       .task-pill:hover:not(.locked):not(.completed):not(.learning) {
         box-shadow:
-          0 4px 12px rgba(196, 168, 130, 0.2),
-          0 2px 4px rgba(196, 168, 130, 0.15);
+          0 4px 12px rgba(var(--border-muted-rgb), 0.2),
+          0 2px 4px rgba(var(--border-muted-rgb), 0.15);
         transform: translateY(-2px) scale(1.02);
         background:
-          linear-gradient(rgba(255, 253, 244, 0.95), rgba(255, 253, 244, 0.95))
+          linear-gradient(rgba(var(--surface-soft-rgb), 0.95), rgba(var(--surface-soft-rgb), 0.95))
             padding-box,
-          linear-gradient(135deg, var(--yellow), rgba(252, 172, 125, 0.8))
+          linear-gradient(135deg, var(--yellow), rgba(var(--orange-rgb), 0.8))
             border-box;
       }
 
       .task-pill.locked {
         cursor: not-allowed;
-        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
-        background: rgba(238, 223, 203, 0.5);
+        box-shadow: inset 0 1px 2px rgba(var(--black-rgb), 0.02);
+        background: rgba(var(--surface-warm-rgb), 0.5);
         border-color: transparent;
-        color: rgba(92, 61, 46, 0.5);
+        color: rgba(var(--brown-dark-rgb), 0.5);
       }
 
       .task-pill.completed {
         background:
           linear-gradient(
               90deg,
-              rgba(235, 246, 255, 0.7) 0%,
-              rgba(220, 240, 255, 0.85) 100%
+              rgba(var(--ice-blue-rgb), 0.7) 0%,
+              rgba(var(--blue-sky-rgb), 0.85) 100%
             )
             padding-box,
           linear-gradient(
               135deg,
-              rgba(160, 205, 250, 0.3) 0%,
-              rgba(140, 192, 248, 0.5) 100%
+              rgba(var(--blue-fog-rgb), 0.3) 0%,
+              rgba(var(--blue-light-rgb), 0.5) 100%
             )
             border-box;
         color: var(--brown-dark);
-        box-shadow: 0 1px 2px rgba(180, 215, 255, 0.35); /* 适度调整蓝色阴影 */
+        box-shadow: 0 1px 2px rgba(var(--blue-soft-rgb), 0.35); /* 适度调整蓝色阴影 */
       }
 
       /* 状态圆圈 */
@@ -676,8 +621,8 @@
         50% {
           transform: scale(1.03);
           box-shadow:
-            inset 0 0 24px rgba(0, 102, 204, 0.2),
-            0 0 16px rgba(0, 102, 204, 0.3);
+            inset 0 0 24px rgba(var(--blue-rgb), 0.2),
+            0 0 16px rgba(var(--blue-rgb), 0.3);
         }
         100% {
           transform: scale(1);
@@ -724,7 +669,7 @@
         opacity: 0.6;
         box-shadow: var(--shadow-inner);
         filter: grayscale(50%);
-        background: #f4efea !important;
+        background: var(--surface-light) !important;
       }
       .feature-card.disabled:hover {
         transform: none;
@@ -741,7 +686,7 @@
         font-size: 28px;
         box-shadow: var(--shadow-soft);
         background: var(--bg-canvas);
-        border: 2px solid rgba(255, 255, 255, 0.6);
+        border: 2px solid rgba(var(--white-rgb), 0.6);
       }
 
       .feature-title {
@@ -820,10 +765,10 @@
         align-items: center;
         gap: 10px;
         padding: 8px 16px;
-        background: rgba(255,253,244,0.85);
+        background: rgba(var(--surface-soft-rgb),0.85);
         border-radius: 14px;
-        border: 1.5px solid rgba(255, 224, 131, 0.4);
-        box-shadow: 0 2px 8px rgba(228, 200, 166, 0.15);
+        border: 1.5px solid rgba(var(--yellow-rgb), 0.4);
+        box-shadow: 0 2px 8px rgba(var(--border-muted-rgb), 0.15);
         flex: 1;
         min-width: 0;
       }
@@ -871,27 +816,27 @@
         white-space: nowrap;
       }
       .plan-action-btn.create {
-        background: linear-gradient(135deg, rgba(255, 224, 131, 0.6) 0%, rgba(252, 172, 125, 0.6) 100%);
+        background: linear-gradient(135deg, rgba(var(--yellow-rgb), 0.6) 0%, rgba(var(--orange-rgb), 0.6) 100%);
         color: var(--brown-dark);
-        box-shadow: 0 2px 8px rgba(252, 172, 125, 0.2);
-        border: 1.5px solid rgba(252, 172, 125, 0.35);
+        box-shadow: 0 2px 8px rgba(var(--orange-rgb), 0.2);
+        border: 1.5px solid rgba(var(--orange-rgb), 0.35);
       }
       .plan-action-btn.create:hover {
         transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(252, 172, 125, 0.35);
-        background: linear-gradient(135deg, rgba(255, 224, 131, 0.75) 0%, rgba(252, 172, 125, 0.75) 100%);
+        box-shadow: 0 4px 12px rgba(var(--orange-rgb), 0.35);
+        background: linear-gradient(135deg, rgba(var(--yellow-rgb), 0.75) 0%, rgba(var(--orange-rgb), 0.75) 100%);
       }
       .plan-action-btn.switch {
         background: linear-gradient(135deg, var(--yellow-light) 0%, var(--yellow) 100%);
         color: var(--brown-dark);
-        box-shadow: 0 2px 8px rgba(255, 224, 131, 0.3);
+        box-shadow: 0 2px 8px rgba(var(--yellow-rgb), 0.3);
         border: 1.5px solid var(--yellow);
       }
       .plan-action-btn.switch:hover {
         transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(255, 224, 131, 0.4);
-        background: linear-gradient(135deg, var(--yellow) 0%, #ffd666 100%);
-        border-color: #ffd666;
+        box-shadow: 0 4px 12px rgba(var(--yellow-rgb), 0.4);
+        background: linear-gradient(135deg, var(--yellow) 0%, var(--accent-warning) 100%);
+        border-color: var(--accent-warning);
       }
 
       /* 切换计划下拉 */
@@ -904,10 +849,10 @@
         right: 0;
         width: 340px;
         border-radius: 18px;
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(var(--white-rgb), 0.95);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
-        box-shadow: 0 8px 32px rgba(139, 99, 71, 0.12), 0 2px 8px rgba(139, 99, 71, 0.08);
+        box-shadow: 0 8px 32px rgba(var(--brown-medium-rgb), 0.12), 0 2px 8px rgba(var(--brown-medium-rgb), 0.08);
         border: 1.5px solid var(--yellow-light);
         z-index: 200;
         padding: 8px;
@@ -962,7 +907,7 @@
         flex: 1;
         height: 6px;
         border-radius: 9999px;
-        background: rgba(196, 168, 130, 0.15);
+        background: rgba(var(--border-muted-rgb), 0.15);
         overflow: hidden;
       }
       .switch-plan-item .plan-item-progress-fill {
@@ -996,7 +941,7 @@
         font-size: 11px;
         font-weight: 600;
         color: var(--brown-medium);
-        background: rgba(196, 168, 130, 0.12);
+        background: rgba(var(--border-muted-rgb), 0.12);
         padding: 2px 6px;
         border-radius: 6px;
         margin-left: 6px;
@@ -1012,15 +957,15 @@
         align-items: center;
         text-align: center;
         padding: 60px 40px;
-        background: rgba(255, 253, 244, 0.6);
+        background: rgba(var(--surface-soft-rgb), 0.6);
         border-radius: 28px;
-        border: 2px dashed rgba(196, 168, 130, 0.25);
+        border: 2px dashed rgba(var(--border-muted-rgb), 0.25);
         box-shadow: var(--shadow-soft);
       }
       .empty-state-icon {
         font-size: 64px;
         margin-bottom: 24px;
-        filter: drop-shadow(0 4px 8px rgba(252, 172, 125, 0.3));
+        filter: drop-shadow(0 4px 8px rgba(var(--orange-rgb), 0.3));
       }
       .empty-state-title {
         font-size: 24px;
@@ -1046,7 +991,7 @@
         font-size: 16px;
         font-weight: 700;
         cursor: pointer;
-        box-shadow: 0 4px 16px rgba(252, 172, 125, 0.35);
+        box-shadow: 0 4px 16px rgba(var(--orange-rgb), 0.35);
         transition: all 220ms ease;
         display: flex;
         align-items: center;
@@ -1054,8 +999,8 @@
       }
       .empty-state-cta:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 24px rgba(252, 172, 125, 0.45);
-        background: linear-gradient(135deg, #fdbc97 0%, #fcac7d 100%);
+        box-shadow: 0 6px 24px rgba(var(--orange-rgb), 0.45);
+        background: linear-gradient(135deg, var(--orange-light) 0%, var(--orange) 100%);
       }
 
       /* 演示切换开关 */
@@ -1068,11 +1013,11 @@
         align-items: center;
         gap: 8px;
         padding: 8px 14px;
-        background: rgba(255, 255, 255, 0.9);
+        background: rgba(var(--white-rgb), 0.9);
         backdrop-filter: blur(10px);
         border-radius: 12px;
-        border: 1.5px solid rgba(196, 168, 130, 0.3);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        border: 1.5px solid rgba(var(--border-muted-rgb), 0.3);
+        box-shadow: 0 4px 12px rgba(var(--black-rgb), 0.08);
         font-size: 12px;
         font-weight: 600;
         color: var(--brown-dark);
@@ -1082,7 +1027,7 @@
       }
       .demo-toggle:hover {
         border-color: var(--yellow);
-        box-shadow: 0 4px 16px rgba(255, 224, 131, 0.3);
+        box-shadow: 0 4px 16px rgba(var(--yellow-rgb), 0.3);
       }
       .demo-toggle-dot {
         width: 8px;
@@ -1484,7 +1429,7 @@
         const [genderSelectOpen, setGenderSelectOpen] = useState(false);
 
         const [titleText, setTitleText] = useState("");
-        const fullTitle = "AI个性化学习助手";
+        const fullTitle = "智映通学——计算机领域个性化多模态讲解系统";
 
         // --- Search State ---
         const [searchCategory, setSearchCategory] = useState("all");
@@ -1702,7 +1647,7 @@
                       <span className="plan-day-tag">Day {calcCompletedDays(activePlan)}/{activePlan.totalDays}</span>
                     </div>
                     <div style={{ display: "flex", alignItems: "center", gap: "8px", width: "100%", paddingLeft: "26px" }}>
-                      <div style={{ flex: 1, height: "6px", borderRadius: "9999px", background: "rgba(196, 168, 130, 0.15)", overflow: "hidden" }}>
+                      <div style={{ flex: 1, height: "6px", borderRadius: "9999px", background: "rgba(var(--border-muted-rgb), 0.15)", overflow: "hidden" }}>
                         <div style={{ height: "100%", borderRadius: "9999px", background: "linear-gradient(90deg, var(--orange) 0%, var(--yellow) 100%)", width: `${(calcCompletedDays(activePlan) / activePlan.totalDays) * 100}%`, transition: "width 0.4s ease" }}></div>
                       </div>
                       <span style={{ fontSize: "11px", fontWeight: "700", color: "var(--brown-medium)", whiteSpace: "nowrap" }}>{Math.round((calcCompletedDays(activePlan) / activePlan.totalDays) * 100)}%</span>
@@ -1843,8 +1788,8 @@
                               style={{
                                 background:
                                   locked || progress === 0
-                                    ? "radial-gradient(circle at 30% 30%, #fefcfb 0%, #d8caa9 100%)"
-                                    : "radial-gradient(circle at 30% 30%, #fff6db 0%, #fad0b4 100%)",
+                                    ? "radial-gradient(circle at 30% 30%, var(--surface-highlight) 0%, var(--surface-warm) 100%)"
+                                    : "radial-gradient(circle at 30% 30%, var(--yellow-lighter) 0%, var(--accent-warm) 100%)",
                               }}
                             ></div>
                             <div
@@ -1852,9 +1797,9 @@
                               style={{
                                 height: `${progress * 100}%`,
                                 background:
-                                  "radial-gradient(circle at 50% 0%, #fff0b3 0%, #ffc14d 100%)",
+                                  "radial-gradient(circle at 50% 0%, var(--yellow-light) 0%, var(--accent-warning) 100%)",
                                 boxShadow:
-                                  "inset 0 2px 4px rgba(255, 255, 255, 0.5)",
+                                  "inset 0 2px 4px rgba(var(--white-rgb), 0.5)",
                               }}
                             ></div>
                           </div>
@@ -1868,7 +1813,7 @@
                             strokeLinejoin="round"
                             style={{
                               filter:
-                                "drop-shadow(0px 1px 1px rgba(255,255,255,0.4))",
+                                "drop-shadow(0px 1px 1px rgba(var(--white-rgb), 0.4))",
                             }}
                           >
                             <defs>
@@ -1883,12 +1828,12 @@
                                   <>
                                     <stop
                                       offset="0%"
-                                      stopColor="#fefcfb"
+                                      stopColor="var(--surface-highlight)"
                                       stopOpacity="0.8"
                                     />
                                     <stop
                                       offset="100%"
-                                      stopColor="#c4a882"
+                                      stopColor="var(--border-strong)"
                                       stopOpacity="0.5"
                                     />
                                   </>
@@ -1896,12 +1841,12 @@
                                   <>
                                     <stop
                                       offset="0%"
-                                      stopColor="#ffe083"
+                                      stopColor="var(--yellow)"
                                       stopOpacity="0.9"
                                     />
                                     <stop
                                       offset="100%"
-                                      stopColor="#be8944"
+                                      stopColor="var(--brown-gold)"
                                       stopOpacity="0.6"
                                     />
                                   </>
@@ -2100,9 +2045,9 @@
                                     cx={endX}
                                     cy={targetY}
                                     r="2.5"
-                                    fill="#fff"
                                     filter="url(#glow-blur)"
                                     style={{
+                                      fill: 'var(--white)',
                                       boxShadow: `0 0 10px ${headColor}`,
                                     }}
                                   />
@@ -2110,7 +2055,7 @@
                                     cx={endX}
                                     cy={targetY}
                                     r="1.5"
-                                    fill="#fff"
+                                    style={{ fill: 'var(--white)' }}
                                   />
                                 </g>
                               );
@@ -2213,7 +2158,7 @@
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
-                  borderBottom: "1px dashed rgba(196, 168, 130, 0.3)",
+                  borderBottom: "1px dashed rgba(var(--border-muted-rgb), 0.3)",
                   flexShrink: 0,
                 }}
               >
@@ -2226,8 +2171,8 @@
                     right: 0,
                     height: "100px",
                     background:
-                      "linear-gradient(135deg, rgba(255,236,179,0.3) 0%, rgba(251,217,196,0.3) 100%)",
-                    borderBottom: "1px solid rgba(196, 168, 130, 0.1)",
+                      "linear-gradient(135deg, rgba(var(--yellow-light-rgb),0.3) 0%, rgba(var(--orange-warm-rgb), 0.3) 100%)",
+                    borderBottom: "1px solid rgba(var(--border-muted-rgb), 0.1)",
                     zIndex: 0,
                     overflow: "hidden",
                   }}
@@ -2267,7 +2212,7 @@
                     style={{
                       width: "100%",
                       padding: "8px 12px",
-                      background: "rgba(255, 255, 255, 0.8)",
+                      background: "rgba(var(--white-rgb), 0.8)",
                       border: "1px dashed var(--orange-light)",
                       borderRadius: "12px",
                       display: "flex",
@@ -2276,7 +2221,7 @@
                       cursor: "pointer",
                       marginBottom: "16px",
                       zIndex: 1,
-                      boxShadow: "0 2px 4px rgba(252, 172, 125, 0.1)",
+                      boxShadow: "0 2px 4px rgba(var(--orange-rgb), 0.1)",
                     }}
                   >
                     <div
@@ -2320,7 +2265,7 @@
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    boxShadow: "0 8px 16px rgba(196, 168, 130, 0.2)",
+                    boxShadow: "0 8px 16px rgba(var(--border-muted-rgb), 0.2)",
                     position: "relative",
                     zIndex: 1,
                     marginBottom: "16px",
@@ -2379,7 +2324,7 @@
                       height="76"
                       rx="24"
                       fill="none"
-                      stroke="rgba(196, 168, 130, 0.3)"
+                      stroke="rgba(var(--border-muted-rgb), 0.3)"
                       strokeWidth="1.5"
                     />
                     <rect
@@ -2439,8 +2384,8 @@
                       background:
                         "linear-gradient(135deg, var(--yellow-mist) 0%, var(--yellow-light) 100%)",
                       borderRadius: "12px",
-                      boxShadow: "0 2px 8px rgba(255, 224, 131, 0.25)",
-                      border: "1px solid rgba(255, 224, 131, 0.4)",
+                      boxShadow: "0 2px 8px rgba(var(--yellow-rgb), 0.25)",
+                      border: "1px solid rgba(var(--yellow-rgb), 0.4)",
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "space-between",
@@ -2489,8 +2434,8 @@
                       background:
                         "linear-gradient(135deg, var(--orange-mist) 0%, var(--chat-orange-accent) 100%)",
                       borderRadius: "12px",
-                      boxShadow: "0 2px 8px rgba(253, 188, 151, 0.25)",
-                      border: "1px solid rgba(253, 188, 151, 0.4)",
+                      boxShadow: "0 2px 8px rgba(var(--orange-light-rgb), 0.25)",
+                      border: "1px solid rgba(var(--orange-light-rgb), 0.4)",
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "space-between",
@@ -2542,8 +2487,8 @@
                       background:
                         "linear-gradient(135deg, var(--blue-mist) 0%, var(--blue-lighter) 100%)",
                       borderRadius: "12px",
-                      boxShadow: "0 2px 8px rgba(140, 192, 248, 0.25)",
-                      border: "1px solid rgba(140, 192, 248, 0.2)",
+                      boxShadow: "0 2px 8px rgba(var(--blue-light-rgb), 0.25)",
+                      border: "1px solid rgba(var(--blue-light-rgb), 0.2)",
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "space-between",
@@ -2587,8 +2532,8 @@
                       background:
                         "linear-gradient(135deg, var(--purple-mist) 0%, var(--purple-lighter) 100%)",
                       borderRadius: "12px",
-                      boxShadow: "0 2px 8px rgba(165, 139, 194, 0.25)",
-                      border: "1px solid rgba(165, 139, 194, 0.2)",
+                      boxShadow: "0 2px 8px rgba(var(--purple-rgb), 0.25)",
+                      border: "1px solid rgba(var(--purple-rgb), 0.2)",
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "space-between",
@@ -2644,7 +2589,7 @@
                       flex: 1,
                       height: "44px",
                       background: "linear-gradient(135deg, var(--green-mist) 0%, var(--green-lighter) 100%)",
-                      border: "1.5px solid rgba(209, 238, 229, 0.5)",
+                      border: "1.5px solid rgba(var(--green-lightest-rgb), 0.5)",
                       borderRadius: "14px",
                       display: "flex",
                       alignItems: "center",
@@ -2653,7 +2598,7 @@
                       fontSize: "13px",
                       fontWeight: "800",
                       color: "var(--brown-dark)",
-                      boxShadow: "0 4px 8px rgba(228, 200, 166, 0.15)",
+                      boxShadow: "0 4px 8px rgba(var(--border-muted-rgb), 0.15)",
                       cursor: "pointer",
                       transition: "transform 0.2s",
                     }}
@@ -2666,7 +2611,7 @@
                       flex: 1,
                       height: "44px",
                       background: "linear-gradient(135deg, var(--yellow-mist) 0%, var(--yellow-light) 100%)",
-                      border: "1px solid rgba(255, 224, 131, 0.4)",
+                      border: "1px solid rgba(var(--yellow-rgb), 0.4)",
                       borderRadius: "14px",
                       display: "flex",
                       alignItems: "center",
@@ -2675,7 +2620,7 @@
                       fontSize: "13px",
                       fontWeight: "800",
                       color: "var(--brown-dark)",
-                      boxShadow: "0 2px 8px rgba(255, 224, 131, 0.25)",
+                      boxShadow: "0 2px 8px rgba(var(--yellow-rgb), 0.25)",
                       cursor: "pointer",
                       transition: "transform 0.2s",
                     }}
@@ -2748,7 +2693,7 @@
                       alignItems: "center",
                       justifyContent: "center",
                       fontSize: "18px",
-                      boxShadow: "0 4px 8px rgba(255, 192, 138, 0.58)",
+                      boxShadow: "0 4px 8px rgba(var(--orange-soft-rgb), 0.58)",
                     }}
                   >
                     🤖
@@ -2832,13 +2777,13 @@
                     left: "20px",
                     right: "20px",
                     height: "56px",
-                    background: "rgba(255, 253, 244, 0.8)",
+                    background: "rgba(var(--surface-soft-rgb), 0.8)",
                     backdropFilter: "blur(12px)",
                     WebkitBackdropFilter: "blur(12px)",
                     borderRadius: "20px",
-                    border: "2px solid rgba(255, 192, 138, 0.72)",
+                    border: "2px solid rgba(var(--orange-soft-rgb), 0.72)",
                     boxShadow:
-                      "0 8px 16px rgba(196, 168, 130, 0.15), inset 0 2px 4px rgba(255, 255, 255, 0.8)",
+                      "0 8px 16px rgba(var(--border-muted-rgb), 0.15), inset 0 2px 4px rgba(var(--white-rgb), 0.8)",
                     display: "flex",
                     alignItems: "center",
                     padding: "0 8px 0 20px",
@@ -2870,7 +2815,7 @@
                       alignItems: "center",
                       justifyContent: "center",
                       cursor: "pointer",
-                      boxShadow: "0 2px 8px rgba(255, 192, 138, 0.72)",
+                      boxShadow: "0 2px 8px rgba(var(--orange-soft-rgb), 0.72)",
                       transition: "transform 0.2s ease, background 0.2s",
                     }}
                   >
@@ -2902,7 +2847,7 @@
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  background: "rgba(255, 253, 244, 0.8)",
+                  background: "rgba(var(--surface-soft-rgb), 0.8)",
                   backdropFilter: "blur(8px)",
                   zIndex: 1000,
                   display: "flex",
@@ -2912,7 +2857,7 @@
               >
                 <div
                   style={{
-                    background: "rgba(255, 255, 255, 0.85)",
+                    background: "rgba(var(--white-rgb), 0.85)",
                     backdropFilter: "blur(20px)",
                     WebkitBackdropFilter: "blur(20px)",
                     borderRadius: "24px",
@@ -2920,7 +2865,7 @@
                     maxWidth: "640px",
                     maxHeight: "85vh",
                     boxShadow: "var(--shadow-hover)",
-                    border: "1.5px solid rgba(255, 236, 179, 0.5)",
+                    border: "1.5px solid rgba(var(--yellow-light-rgb), 0.5)",
                     position: "relative",
                     overflow: "hidden",
                     display: "flex",
@@ -2932,7 +2877,7 @@
                     style={{
                       height: "4px",
                       background:
-                        "linear-gradient(90deg, #fcac7d 0%, #ffe083 50%, #8cc0f8 100%)",
+                        "linear-gradient(90deg, var(--orange) 0%, var(--yellow) 50%, var(--blue-light) 100%)",
                       width: "100%",
                       flexShrink: 0,
                     }}
@@ -2952,7 +2897,7 @@
                         top: "20px",
                         right: "20px",
                         background: "var(--bg-canvas)",
-                        border: "1.5px solid rgba(196, 168, 130, 0.25)",
+                        border: "1.5px solid rgba(var(--border-muted-rgb), 0.25)",
                         borderRadius: "50%",
                         width: "36px",
                         height: "36px",
@@ -2960,7 +2905,7 @@
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        boxShadow: "0 2px 8px rgba(196, 168, 130, 0.15)",
+                        boxShadow: "0 2px 8px rgba(var(--border-muted-rgb), 0.15)",
                         transition: "all 0.2s ease",
                         zIndex: 10,
                       }}
@@ -2970,15 +2915,15 @@
                         e.currentTarget.style.borderColor =
                           "var(--orange-light)";
                         e.currentTarget.style.boxShadow =
-                          "0 4px 12px rgba(252, 172, 125, 0.25)";
+                          "0 4px 12px rgba(var(--orange-rgb), 0.25)";
                       }}
                       onMouseOut={(e) => {
                         e.currentTarget.style.transform =
                           "rotate(0deg) scale(1)";
                         e.currentTarget.style.borderColor =
-                          "rgba(196, 168, 130, 0.25)";
+                          "rgba(var(--border-muted-rgb), 0.25)";
                         e.currentTarget.style.boxShadow =
-                          "0 2px 8px rgba(196, 168, 130, 0.15)";
+                          "0 2px 8px rgba(var(--border-muted-rgb), 0.15)";
                       }}
                     >
                       <svg
@@ -3001,7 +2946,7 @@
                         fontSize: "24px",
                         fontWeight: "800",
                         background:
-                          "linear-gradient(135deg, var(--brown-dark) 0%, #da8855 50%, var(--brown-gold) 100%)",
+                          "linear-gradient(135deg, var(--brown-dark) 0%, var(--accent-warm) 50%, var(--brown-gold) 100%)",
                         WebkitBackgroundClip: "text",
                         WebkitTextFillColor: "transparent",
                         display: "flex",
@@ -3035,7 +2980,7 @@
                           fontSize: "14px",
                           boxShadow:
                             handbookTab === "gold"
-                              ? "0 2px 8px rgba(255, 224, 131, 0.3)"
+                              ? "0 2px 8px rgba(var(--yellow-rgb), 0.3)"
                               : "none",
                           transition: "all 0.2s ease",
                         }}
@@ -3058,7 +3003,7 @@
                           fontSize: "14px",
                           boxShadow:
                             handbookTab === "diamond"
-                              ? "0 2px 8px rgba(140, 192, 248, 0.3)"
+                              ? "0 2px 8px rgba(var(--blue-light-rgb), 0.3)"
                               : "none",
                           transition: "all 0.2s ease",
                         }}
@@ -3081,7 +3026,7 @@
                           fontSize: "14px",
                           boxShadow:
                             handbookTab === "exp"
-                              ? "0 2px 8px rgba(94, 182, 157, 0.25)"
+                              ? "0 2px 8px rgba(var(--green-rgb), 0.25)"
                               : "none",
                           transition: "all 0.2s ease",
                         }}
@@ -3109,7 +3054,7 @@
                               padding: "14px 16px",
                               background: "var(--yellow-mist)",
                               borderRadius: "14px",
-                              border: "1px solid rgba(255, 224, 131, 0.3)",
+                              border: "1px solid rgba(var(--yellow-rgb), 0.3)",
                             }}
                           >
                             <div
@@ -3156,7 +3101,7 @@
                               padding: "14px 16px",
                               background: "var(--orange-mist)",
                               borderRadius: "14px",
-                              border: "1px solid rgba(253, 188, 151, 0.3)",
+                              border: "1px solid rgba(var(--orange-light-rgb), 0.3)",
                             }}
                           >
                             <div
@@ -3190,7 +3135,7 @@
                               padding: "14px 16px",
                               background: "var(--purple-mist)",
                               borderRadius: "14px",
-                              border: "1px solid rgba(165, 139, 194, 0.3)",
+                              border: "1px solid rgba(var(--purple-rgb), 0.3)",
                             }}
                           >
                             <div
@@ -3239,7 +3184,7 @@
                               padding: "14px 16px",
                               background: "var(--blue-mist)",
                               borderRadius: "14px",
-                              border: "1px solid rgba(140, 192, 248, 0.3)",
+                              border: "1px solid rgba(var(--blue-light-rgb), 0.3)",
                             }}
                           >
                             <div
@@ -3275,7 +3220,7 @@
                               padding: "14px 16px",
                               background: "var(--yellow-mist)",
                               borderRadius: "14px",
-                              border: "1px solid rgba(255, 224, 131, 0.3)",
+                              border: "1px solid rgba(var(--yellow-rgb), 0.3)",
                             }}
                           >
                             <div
@@ -3299,7 +3244,7 @@
                                 <tr
                                   style={{
                                     borderBottom:
-                                      "1.5px solid rgba(196, 168, 130, 0.2)",
+                                      "1.5px solid rgba(var(--border-muted-rgb), 0.2)",
                                   }}
                                 >
                                   <th
@@ -3355,7 +3300,7 @@
                                     key={i}
                                     style={{
                                       borderBottom:
-                                        "1px solid rgba(196, 168, 130, 0.1)",
+                                        "1px solid rgba(var(--border-muted-rgb), 0.1)",
                                     }}
                                   >
                                     {row.map((cell, j) => (
@@ -3381,7 +3326,7 @@
                               padding: "14px 16px",
                               background: "var(--orange-mist)",
                               borderRadius: "14px",
-                              border: "1px solid rgba(253, 188, 151, 0.3)",
+                              border: "1px solid rgba(var(--orange-light-rgb), 0.3)",
                             }}
                           >
                             <div
@@ -3425,7 +3370,7 @@
                               padding: "14px 16px",
                               background: "var(--green-mist)",
                               borderRadius: "14px",
-                              border: "1px solid rgba(94, 182, 157, 0.3)",
+                              border: "1px solid rgba(var(--green-rgb), 0.3)",
                             }}
                           >
                             <div
@@ -3470,7 +3415,7 @@
                               padding: "14px 16px",
                               background: "var(--yellow-mist)",
                               borderRadius: "14px",
-                              border: "1px solid rgba(255, 224, 131, 0.3)",
+                              border: "1px solid rgba(var(--yellow-rgb), 0.3)",
                             }}
                           >
                             <div
@@ -3494,7 +3439,7 @@
                                 <tr
                                   style={{
                                     borderBottom:
-                                      "1.5px solid rgba(196, 168, 130, 0.2)",
+                                      "1.5px solid rgba(var(--border-muted-rgb), 0.2)",
                                   }}
                                 >
                                   <th
@@ -3577,7 +3522,7 @@
                                     key={i}
                                     style={{
                                       borderBottom:
-                                        "1px solid rgba(196, 168, 130, 0.1)",
+                                        "1px solid rgba(var(--border-muted-rgb), 0.1)",
                                     }}
                                   >
                                     {row.map((cell, j) => (
@@ -3629,7 +3574,7 @@
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  background: "rgba(255, 253, 244, 0.8)",
+                  background: "rgba(var(--surface-soft-rgb), 0.8)",
                   backdropFilter: "blur(8px)",
                   WebkitBackdropFilter: "blur(8px)",
                   zIndex: 1000,
@@ -3640,7 +3585,7 @@
                     position: "relative",
                     width: "min(500px, calc(100vw - 48px))",
                     borderRadius: "24px",
-                    background: "rgba(255, 255, 255, 0.85)",
+                    background: "rgba(var(--white-rgb), 0.85)",
                     backdropFilter: "blur(20px)",
                     WebkitBackdropFilter: "blur(20px)",
                     boxShadow: "var(--shadow-soft)",
@@ -3652,7 +3597,7 @@
                     style={{
                       height: "4px",
                       background:
-                        "linear-gradient(90deg, #fcac7d 0%, #ffe083 50%, #8cc0f8 100%)",
+                        "linear-gradient(90deg, var(--orange) 0%, var(--yellow) 50%, var(--blue-light) 100%)",
                       width: "100%",
                     }}
                   />
@@ -3672,7 +3617,7 @@
                         top: "20px",
                         right: "20px",
                         background: "var(--bg-canvas)",
-                        border: "1.5px solid rgba(196, 168, 130, 0.25)",
+                        border: "1.5px solid rgba(var(--border-muted-rgb), 0.25)",
                         borderRadius: "50%",
                         width: "36px",
                         height: "36px",
@@ -3680,7 +3625,7 @@
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        boxShadow: "0 2px 8px rgba(196, 168, 130, 0.15)",
+                        boxShadow: "0 2px 8px rgba(var(--border-muted-rgb), 0.15)",
                         transition: "all 0.2s ease",
                         zIndex: 10,
                       }}
@@ -3690,15 +3635,15 @@
                         e.currentTarget.style.borderColor =
                           "var(--orange-light)";
                         e.currentTarget.style.boxShadow =
-                          "0 4px 12px rgba(252, 172, 125, 0.25)";
+                          "0 4px 12px rgba(var(--orange-rgb), 0.25)";
                       }}
                       onMouseOut={(e) => {
                         e.currentTarget.style.transform =
                           "rotate(0deg) scale(1)";
                         e.currentTarget.style.borderColor =
-                          "rgba(196, 168, 130, 0.25)";
+                          "rgba(var(--border-muted-rgb), 0.25)";
                         e.currentTarget.style.boxShadow =
-                          "0 2px 8px rgba(196, 168, 130, 0.15)";
+                          "0 2px 8px rgba(var(--border-muted-rgb), 0.15)";
                       }}
                     >
                       <svg
@@ -3810,7 +3755,7 @@
                             fontSize: "15px",
                             fontWeight: "500",
                             boxShadow:
-                              "inset 4px 4px 8px rgba(228,200,166,0.3), inset -4px -4px 8px rgba(255,255,255,0.8)",
+                              "inset 4px 4px 8px rgba(var(--border-muted-rgb), 0.3), inset -4px -4px 8px rgba(var(--white-rgb), 0.8)",
                             transition:
                               "border-color 200ms ease, box-shadow 200ms ease",
                             outline: "none",
@@ -3818,12 +3763,12 @@
                           onFocus={(e) => {
                             e.target.style.borderColor = "var(--yellow)";
                             e.target.style.boxShadow =
-                              "inset 4px 4px 8px rgba(228,200,166,0.3), inset -4px -4px 8px rgba(255,255,255,0.8), 0 0 0 3px rgba(255,224,131,0.18)";
+                              "inset 4px 4px 8px rgba(var(--border-muted-rgb), 0.3), inset -4px -4px 8px rgba(var(--white-rgb), 0.8), 0 0 0 3px rgba(var(--yellow-rgb), 0.18)";
                           }}
                           onBlur={(e) => {
                             e.target.style.borderColor = "transparent";
                             e.target.style.boxShadow =
-                              "inset 4px 4px 8px rgba(228,200,166,0.3), inset -4px -4px 8px rgba(255,255,255,0.8)";
+                              "inset 4px 4px 8px rgba(var(--border-muted-rgb), 0.3), inset -4px -4px 8px rgba(var(--white-rgb), 0.8)";
                           }}
                         />
                       </div>
@@ -3870,8 +3815,8 @@
                                 fontSize: "15px",
                                 fontWeight: "500",
                                 boxShadow: genderSelectOpen
-                                  ? "inset 4px 4px 8px rgba(228,200,166,0.3), inset -4px -4px 8px rgba(255,255,255,0.8), 0 0 0 3px rgba(255,224,131,0.18)"
-                                  : "inset 4px 4px 8px rgba(228,200,166,0.3), inset -4px -4px 8px rgba(255,255,255,0.8)",
+                                  ? "inset 4px 4px 8px rgba(var(--border-muted-rgb), 0.3), inset -4px -4px 8px rgba(var(--white-rgb), 0.8), 0 0 0 3px rgba(var(--yellow-rgb), 0.18)"
+                                  : "inset 4px 4px 8px rgba(var(--border-muted-rgb), 0.3), inset -4px -4px 8px rgba(var(--white-rgb), 0.8)",
                                 transition:
                                   "border-color 200ms ease, box-shadow 200ms ease",
                                 cursor: "pointer",
@@ -3917,11 +3862,11 @@
                                   right: 0,
                                   zIndex: 100,
                                   borderRadius: "16px",
-                                  background: "rgba(255,255,255,0.95)",
+                                  background: "rgba(var(--white-rgb), 0.95)",
                                   backdropFilter: "blur(16px)",
                                   WebkitBackdropFilter: "blur(16px)",
                                   boxShadow:
-                                    "0 8px 32px rgba(139,99,71,0.12), 0 2px 8px rgba(139,99,71,0.08)",
+                                    "0 8px 32px rgba(var(--brown-medium-rgb), 0.12), 0 2px 8px rgba(var(--brown-medium-rgb), 0.08)",
                                   border: "1.5px solid var(--yellow-light)",
                                   padding: "6px",
                                   maxHeight: "200px",
@@ -4044,7 +3989,7 @@
                               fontSize: "15px",
                               fontWeight: "500",
                               boxShadow:
-                                "inset 4px 4px 8px rgba(228,200,166,0.3), inset -4px -4px 8px rgba(255,255,255,0.8)",
+                                "inset 4px 4px 8px rgba(var(--border-muted-rgb), 0.3), inset -4px -4px 8px rgba(var(--white-rgb), 0.8)",
                               transition:
                                 "border-color 200ms ease, box-shadow 200ms ease",
                               outline: "none",
@@ -4052,12 +3997,12 @@
                             onFocus={(e) => {
                               e.target.style.borderColor = "var(--yellow)";
                               e.target.style.boxShadow =
-                                "inset 4px 4px 8px rgba(228,200,166,0.3), inset -4px -4px 8px rgba(255,255,255,0.8), 0 0 0 3px rgba(255,224,131,0.18)";
+                                "inset 4px 4px 8px rgba(var(--border-muted-rgb), 0.3), inset -4px -4px 8px rgba(var(--white-rgb), 0.8), 0 0 0 3px rgba(var(--yellow-rgb), 0.18)";
                             }}
                             onBlur={(e) => {
                               e.target.style.borderColor = "transparent";
                               e.target.style.boxShadow =
-                                "inset 4px 4px 8px rgba(228,200,166,0.3), inset -4px -4px 8px rgba(255,255,255,0.8)";
+                                "inset 4px 4px 8px rgba(var(--border-muted-rgb), 0.3), inset -4px -4px 8px rgba(var(--white-rgb), 0.8)";
                             }}
                           />
                         </div>
@@ -4100,7 +4045,7 @@
                             fontSize: "15px",
                             fontWeight: "500",
                             boxShadow:
-                              "inset 4px 4px 8px rgba(228,200,166,0.3), inset -4px -4px 8px rgba(255,255,255,0.8)",
+                              "inset 4px 4px 8px rgba(var(--border-muted-rgb), 0.3), inset -4px -4px 8px rgba(var(--white-rgb), 0.8)",
                             transition:
                               "border-color 200ms ease, box-shadow 200ms ease",
                             outline: "none",
@@ -4110,12 +4055,12 @@
                           onFocus={(e) => {
                             e.target.style.borderColor = "var(--yellow)";
                             e.target.style.boxShadow =
-                              "inset 4px 4px 8px rgba(228,200,166,0.3), inset -4px -4px 8px rgba(255,255,255,0.8), 0 0 0 3px rgba(255,224,131,0.18)";
+                              "inset 4px 4px 8px rgba(var(--border-muted-rgb), 0.3), inset -4px -4px 8px rgba(var(--white-rgb), 0.8), 0 0 0 3px rgba(var(--yellow-rgb), 0.18)";
                           }}
                           onBlur={(e) => {
                             e.target.style.borderColor = "transparent";
                             e.target.style.boxShadow =
-                              "inset 4px 4px 8px rgba(228,200,166,0.3), inset -4px -4px 8px rgba(255,255,255,0.8)";
+                              "inset 4px 4px 8px rgba(var(--border-muted-rgb), 0.3), inset -4px -4px 8px rgba(var(--white-rgb), 0.8)";
                           }}
                         />
                       </div>
@@ -4135,7 +4080,7 @@
                           fontWeight: "700",
                           letterSpacing: "0.3px",
                           cursor: "pointer",
-                          boxShadow: "0 4px 16px rgba(252, 172, 125, 0.35)",
+                          boxShadow: "0 4px 16px rgba(var(--orange-rgb), 0.35)",
                           transition: "all 220ms ease",
                           display: "flex",
                           alignItems: "center",
@@ -4144,16 +4089,16 @@
                         }}
                         onMouseOver={(e) => {
                           e.currentTarget.style.background =
-                            "linear-gradient(135deg, #fdbc97 0%, #fcac7d 100%)";
+                            "linear-gradient(135deg, var(--orange-light) 0%, var(--orange) 100%)";
                           e.currentTarget.style.boxShadow =
-                            "0 6px 24px rgba(252, 172, 125, 0.45)";
+                            "0 6px 24px rgba(var(--orange-rgb), 0.45)";
                           e.currentTarget.style.transform = "translateY(-1px)";
                         }}
                         onMouseOut={(e) => {
                           e.currentTarget.style.background =
                             "linear-gradient(135deg, var(--yellow) 0%, var(--orange) 100%)";
                           e.currentTarget.style.boxShadow =
-                            "0 4px 16px rgba(252, 172, 125, 0.35)";
+                            "0 4px 16px rgba(var(--orange-rgb), 0.35)";
                           e.currentTarget.style.transform = "translateY(0)";
                         }}
                       >
@@ -4174,7 +4119,7 @@
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  background: "rgba(255, 253, 244, 0.8)",
+                  background: "rgba(var(--surface-soft-rgb), 0.8)",
                   backdropFilter: "blur(8px)",
                   WebkitBackdropFilter: "blur(8px)",
                   zIndex: 1000,
@@ -4185,7 +4130,7 @@
                     position: "relative",
                     width: "min(420px, calc(100vw - 48px))",
                     borderRadius: "24px",
-                    background: "rgba(255, 255, 255, 0.85)",
+                    background: "rgba(var(--white-rgb), 0.85)",
                     backdropFilter: "blur(20px)",
                     WebkitBackdropFilter: "blur(20px)",
                     boxShadow: "var(--shadow-soft)",
@@ -4196,7 +4141,7 @@
                     style={{
                       height: "4px",
                       background:
-                        "linear-gradient(90deg, #fcac7d 0%, #ffe083 50%, #8cc0f8 100%)",
+                        "linear-gradient(90deg, var(--orange) 0%, var(--yellow) 50%, var(--blue-light) 100%)",
                       width: "100%",
                     }}
                   />
@@ -4216,7 +4161,7 @@
                         top: "20px",
                         right: "20px",
                         background: "var(--bg-canvas)",
-                        border: "1.5px solid rgba(196, 168, 130, 0.25)",
+                        border: "1.5px solid rgba(var(--border-muted-rgb), 0.25)",
                         borderRadius: "50%",
                         width: "36px",
                         height: "36px",
@@ -4224,7 +4169,7 @@
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        boxShadow: "0 2px 8px rgba(196, 168, 130, 0.15)",
+                        boxShadow: "0 2px 8px rgba(var(--border-muted-rgb), 0.15)",
                         transition: "all 0.2s ease",
                         zIndex: 10,
                       }}
@@ -4234,15 +4179,15 @@
                         e.currentTarget.style.borderColor =
                           "var(--orange-light)";
                         e.currentTarget.style.boxShadow =
-                          "0 4px 12px rgba(252, 172, 125, 0.25)";
+                          "0 4px 12px rgba(var(--orange-rgb), 0.25)";
                       }}
                       onMouseOut={(e) => {
                         e.currentTarget.style.transform =
                           "rotate(0deg) scale(1)";
                         e.currentTarget.style.borderColor =
-                          "rgba(196, 168, 130, 0.25)";
+                          "rgba(var(--border-muted-rgb), 0.25)";
                         e.currentTarget.style.boxShadow =
-                          "0 2px 8px rgba(196, 168, 130, 0.15)";
+                          "0 2px 8px rgba(var(--border-muted-rgb), 0.15)";
                       }}
                     >
                       <svg
@@ -4336,17 +4281,17 @@
                             padding: "8px 4px",
                             borderRadius: "14px",
                             background: isDone
-                              ? "#effce3"
+                              ? "var(--success-bg)"
                               : d.today
                                 ? "var(--yellow-lighter)"
                                 : "var(--bg-canvas)",
                             border: (d.today && !checkinDone)
                               ? "2px solid var(--yellow)"
                               : isDone
-                                ? "2px solid rgba(71,130,17,0.28)"
-                                : "1.5px solid rgba(196, 168, 130, 0.15)",
+                                ? "2px solid rgba(var(--success-text-rgb),0.28)"
+                                : "1.5px solid rgba(var(--border-muted-rgb), 0.15)",
                             boxShadow: (d.today && !checkinDone)
-                              ? "0 0 0 3px rgba(255, 224, 131, 0.18)"
+                              ? "0 0 0 3px rgba(var(--yellow-rgb), 0.18)"
                               : "none",
                             transition: "all 0.2s",
                           }}
@@ -4356,7 +4301,7 @@
                               fontSize: "11px",
                               fontWeight: "700",
                               color: isDone
-                                ? "#478211"
+                                ? "var(--success-text)"
                                 : "var(--brown-medium)",
                             }}
                           >
@@ -4386,7 +4331,7 @@
                         padding: "12px 14px",
                         background: "var(--yellow-mist)",
                         borderRadius: "12px",
-                        border: "1px solid rgba(255, 224, 131, 0.3)",
+                        border: "1px solid rgba(var(--yellow-rgb), 0.3)",
                         fontSize: "12px",
                         color: "var(--brown-medium)",
                         lineHeight: 1.6,
@@ -4421,8 +4366,8 @@
                         fontWeight: "700",
                         cursor: "pointer",
                         boxShadow: checkinDone
-                          ? "0 4px 16px rgba(94, 182, 157, 0.35)"
-                          : "0 4px 16px rgba(252, 172, 125, 0.35)",
+                          ? "0 4px 16px rgba(var(--green-rgb), 0.35)"
+                          : "0 4px 16px rgba(var(--orange-rgb), 0.35)",
                         transition: "all 320ms ease",
                         display: "flex",
                         alignItems: "center",
@@ -4432,9 +4377,9 @@
                       onMouseOver={(e) => {
                         if (!checkinDone) {
                           e.currentTarget.style.background =
-                            "linear-gradient(135deg, #fdbc97 0%, #fcac7d 100%)";
+                            "linear-gradient(135deg, var(--orange-light) 0%, var(--orange) 100%)";
                           e.currentTarget.style.boxShadow =
-                            "0 6px 24px rgba(252, 172, 125, 0.45)";
+                            "0 6px 24px rgba(var(--orange-rgb), 0.45)";
                           e.currentTarget.style.transform = "translateY(-1px)";
                         }
                       }}
@@ -4443,7 +4388,7 @@
                           e.currentTarget.style.background =
                             "linear-gradient(135deg, var(--yellow) 0%, var(--orange) 100%)";
                           e.currentTarget.style.boxShadow =
-                            "0 4px 16px rgba(252, 172, 125, 0.35)";
+                            "0 4px 16px rgba(var(--orange-rgb), 0.35)";
                           e.currentTarget.style.transform = "translateY(0)";
                         }
                       }}

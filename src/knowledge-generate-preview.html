@@ -19,64 +19,9 @@
     <!-- ECharts -->
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
 
+        <link rel="stylesheet" href="variables.css" />
+
     <style>
-      :root {
-        /* 严格应用指定的配色体系 — 与 dashboard-preview.html 完全一致 */
-        --bg-canvas: #fffdf4;
-        --text-primary: #2c1608;
-        --text-heading: #be8944;
-
-        --blue: #0066cc;
-        --blue-light: #8cc0f8;
-        --blue-lighter: #c8e2ff;
-        --blue-mist: #e7f4ff;
-
-        --yellow: #ffe083;
-        --yellow-light: #ffecb3;
-        --yellow-lighter: #fff6db;
-        --yellow-mist: #fffbed;
-
-        --orange: #fcac7d;
-        --orange-light: #fdbc97;
-        --orange-lighter: #fbd9c4;
-        --orange-mist: #f9ebe4;
-
-        --chat-orange-surface: #ffd4b3;
-        --chat-orange-accent: #ffccad;
-        --chat-yellow-surface: #ffefae;
-        --chat-yellow-accent: #fee48d;
-
-        --purple: #a58bc2;
-        --purple-light: #d1c1e0;
-        --purple-lighter: #eaddf5;
-        --purple-mist: #f6f2fa;
-
-        --green: #5eb69d;
-        --green-light: #9fd8c8;
-        --green-lighter: #d1eee5;
-        --green-mist: #eaf8f3;
-
-        --brown-gold: #be8944;
-        --brown-light: #c4a882;
-        --brown-medium: #8b6347;
-        --brown-dark: #5c3d2e;
-        --brown-deep: #271307;
-
-        --warn-bg: #fbddd6;
-        --warn-text: #c84a2b;
-        --success-bg: #effce3;
-        --success-text: #478211;
-
-        --shadow-soft:
-          6px 6px 12px rgba(228, 200, 166, 0.3),
-          -6px -6px 12px rgba(255, 255, 255, 0.8);
-        --shadow-hover:
-          8px 8px 16px rgba(228, 200, 166, 0.4),
-          -8px -8px 16px rgba(255, 255, 255, 0.9);
-        --shadow-inner:
-          inset 4px 4px 8px rgba(228, 200, 166, 0.3),
-          inset -4px -4px 8px rgba(255, 255, 255, 0.8);
-      }
 
       * {
         box-sizing: border-box;
@@ -106,11 +51,11 @@
         background: transparent;
       }
       ::-webkit-scrollbar-thumb {
-        background: #e4c8a6;
+        background: var(--code-border);
         border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #c4a882;
+        background: var(--border-strong);
       }
 
       /* === 基础布局 === */
@@ -135,10 +80,10 @@
         flex: 0 0 30vw;
         min-width: 320px;
         max-width: 450px;
-        border-left: 2px solid rgba(196, 168, 130, 0.15);
+        border-left: 2px solid rgba(var(--border-strong-rgb), 0.15);
         display: flex;
         flex-direction: column;
-        background: rgba(255, 253, 244, 0.6);
+        background: rgba(var(--surface-soft-rgb), 0.6);
         backdrop-filter: blur(12px);
       }
 
@@ -171,7 +116,7 @@
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        text-shadow: 0 4px 12px rgba(190, 137, 68, 0.2);
+        text-shadow: 0 4px 12px rgba(var(--brown-gold-rgb), 0.2);
         display: flex;
         align-items: center;
         letter-spacing: -0.5px;
@@ -184,7 +129,7 @@
         margin-left: 4px;
         font-weight: 400;
         -webkit-text-fill-color: var(--orange);
-        text-shadow: 0 0 10px rgba(252, 172, 125, 0.5);
+        text-shadow: 0 0 10px rgba(var(--orange-rgb), 0.5);
       }
       @keyframes blink {
         0%,
@@ -208,10 +153,10 @@
       .content-card {
         border-radius: 24px;
         padding: 40px;
-        background: rgba(255, 253, 244, 0.7);
+        background: rgba(var(--surface-soft-rgb), 0.7);
         backdrop-filter: blur(8px);
         box-shadow: var(--shadow-soft);
-        border: 1px solid rgba(255, 255, 255, 0.4);
+        border: 1px solid rgba(var(--white-rgb), 0.4);
         transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
       }
       .content-card:hover {
@@ -228,7 +173,7 @@
         --theme-grad-hover-start: var(--yellow);
         --theme-grad-hover-end: var(--orange);
         --theme-icon-color: var(--text-heading);
-        background: rgba(255, 236, 179, 0.3);
+        background: rgba(var(--yellow-light-rgb), 0.3);
         border-color: var(--yellow-light);
       }
       .card-theme-purple {
@@ -237,8 +182,8 @@
         --theme-grad-hover-start: var(--purple-light);
         --theme-grad-hover-end: var(--purple);
         --theme-icon-color: var(--purple);
-        background: rgba(246, 242, 250, 0.9);
-        border-color: rgba(209, 193, 224, 0.9);
+        background: rgba(var(--purple-mist-rgb), 0.9);
+        border-color: rgba(var(--purple-light-rgb), 0.9);
       }
       .card-theme-blue {
         --theme-grad-start: var(--blue-lighter);
@@ -246,8 +191,8 @@
         --theme-grad-hover-start: var(--blue-light);
         --theme-grad-hover-end: var(--blue);
         --theme-icon-color: var(--blue);
-        background: rgba(231, 244, 255, 0.6);
-        border-color: rgba(140, 192, 248, 0.6);
+        background: rgba(var(--blue-mist-rgb), 0.6);
+        border-color: rgba(var(--blue-light-rgb), 0.6);
       }
       .card-theme-green {
         --theme-grad-start: var(--green-lighter);
@@ -255,8 +200,8 @@
         --theme-grad-hover-start: var(--green-light);
         --theme-grad-hover-end: var(--green);
         --theme-icon-color: var(--green);
-        background: rgba(234, 248, 243, 0.6);
-        border-color: rgba(159, 216, 200, 0.6);
+        background: rgba(var(--green-mist-rgb), 0.6);
+        border-color: rgba(var(--green-light-rgb), 0.6);
       }
 
       .card-header {
@@ -265,7 +210,7 @@
         justify-content: space-between;
         margin-bottom: 24px;
         padding-bottom: 16px;
-        border-bottom: 1px solid rgba(196, 168, 130, 0.2);
+        border-bottom: 1px solid rgba(var(--border-strong-rgb), 0.2);
       }
 
       .card-header-left {
@@ -276,7 +221,7 @@
 
       .card-header-left i {
         color: inherit;
-        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        filter: drop-shadow(0 2px 4px rgba(var(--black-rgb), 0.1));
       }
 
       .card-title {
@@ -298,7 +243,7 @@
         border-radius: 999px;
         border: 2px solid transparent;
         background:
-          linear-gradient(rgba(255, 253, 244, 0.95), rgba(255, 253, 244, 0.95))
+          linear-gradient(rgba(var(--surface-soft-rgb), 0.95), rgba(var(--surface-soft-rgb), 0.95))
             padding-box,
           linear-gradient(
               135deg,
@@ -316,13 +261,13 @@
         align-items: center;
         gap: 4px;
         box-shadow:
-          0 2px 6px rgba(228, 200, 166, 0.15),
-          0 1px 2px rgba(196, 168, 130, 0.1);
+          0 2px 6px rgba(var(--border-muted-rgb), 0.15),
+          0 1px 2px rgba(var(--border-strong-rgb), 0.1);
       }
       .btn-outline-sm:hover {
         transform: translateY(-1px);
         background:
-          linear-gradient(rgba(255, 253, 244, 0.95), rgba(255, 253, 244, 0.95))
+          linear-gradient(rgba(var(--surface-soft-rgb), 0.95), rgba(var(--surface-soft-rgb), 0.95))
             padding-box,
           linear-gradient(
               135deg,
@@ -331,8 +276,8 @@
             )
             border-box;
         box-shadow:
-          0 4px 10px rgba(228, 200, 166, 0.25),
-          0 2px 4px rgba(196, 168, 130, 0.15);
+          0 4px 10px rgba(var(--border-muted-rgb), 0.25),
+          0 2px 4px rgba(var(--border-strong-rgb), 0.15);
       }
       .btn-outline-sm i {
         color: var(--theme-icon-color, var(--text-heading));
@@ -340,12 +285,12 @@
 
       /* === 思维导图区域 === */
       .mindmap-section {
-        border: 2px dashed rgba(255, 192, 138, 0.4);
+        border: 2px dashed rgba(var(--orange-soft-rgb), 0.4);
         background: var(--yellow-mist);
         position: relative;
         overflow: hidden;
         border-radius: 16px;
-        box-shadow: inset 0 2px 8px rgba(255, 224, 131, 0.5);
+        box-shadow: inset 0 2px 8px rgba(var(--yellow-rgb), 0.5);
       }
       .mindmap-section::before {
         content: "";
@@ -353,7 +298,7 @@
         inset: 0;
         background-image: radial-gradient(
           circle,
-          rgba(228, 200, 166, 0.4) 1px,
+          rgba(var(--border-muted-rgb), 0.4) 1px,
           transparent 1px
         );
         background-size: 20px 20px;
@@ -377,7 +322,7 @@
         font-size: 19px;
         margin-top: 28px;
         margin-bottom: 16px;
-        text-shadow: 0 2px 4px rgba(165, 139, 194, 0.2);
+        text-shadow: 0 2px 4px rgba(var(--purple-rgb), 0.2);
       }
       .prose p {
         line-height: 1.8;
@@ -402,30 +347,30 @@
 
       .inline-code {
         padding: 2px 8px;
-        background: rgba(209, 193, 224, 0.4);
-        color: #6a4b93;
+        background: rgba(var(--purple-light-rgb), 0.4);
+        color: var(--code-string-alt);
         border-radius: 6px;
         font-family: "Fira Code", monospace;
         font-size: 13px;
-        border: 1px solid rgba(165, 139, 194, 0.2);
+        border: 1px solid rgba(var(--purple-rgb), 0.2);
       }
 
       .code-block {
-        background: rgba(255, 255, 255, 0.6);
+        background: rgba(var(--white-rgb), 0.6);
         border-radius: 16px;
-        border: 1px solid rgba(165, 139, 194, 0.3);
+        border: 1px solid rgba(var(--purple-rgb), 0.3);
         padding: 20px;
         margin: 16px 0 24px;
         position: relative;
         overflow: hidden;
-        box-shadow: inset 0 2px 4px rgba(165, 139, 194, 0.1);
+        box-shadow: inset 0 2px 4px rgba(var(--purple-rgb), 0.1);
       }
       .code-block-lang {
         position: absolute;
         top: 0;
         right: 0;
-        background: rgba(165, 139, 194, 0.2);
-        color: #6a4b93;
+        background: rgba(var(--purple-rgb), 0.2);
+        color: var(--code-string-alt);
         font-size: 11px;
         padding: 4px 10px;
         border-radius: 0 0 0 10px;
@@ -441,19 +386,19 @@
         line-height: 1.7;
       }
       .code-comment {
-        color: #1a7f99;
+        color: var(--code-comment);
       }
       .code-number {
-        color: #c35101;
+        color: var(--code-number);
       }
       .code-string {
-        color: #478211;
+        color: var(--success-text);
       }
 
       .info-callout {
         padding: 16px 20px;
-        background: #dee9ff65;
-        border: 1px solid rgba(140, 192, 248, 0.3);
+        background: rgba(var(--blue-sky-rgb), 0.4);
+        border: 1px solid rgba(var(--blue-light-rgb), 0.3);
         border-radius: 16px;
         display: flex;
         align-items: flex-start;
@@ -477,7 +422,7 @@
       .video-placeholder {
         width: 100%;
         aspect-ratio: 16/9;
-        background: linear-gradient(135deg, #1e3a5f, #0d1b2a);
+        background: linear-gradient(135deg, var(--blue-deep-start), var(--blue-deep-end));
         border-radius: 16px;
         display: flex;
         align-items: center;
@@ -486,9 +431,9 @@
         overflow: hidden;
         cursor: pointer;
         box-shadow:
-          inset 4px 4px 12px rgba(0, 0, 0, 0.4),
-          inset -4px -4px 12px rgba(140, 192, 248, 0.1);
-        border: 1px solid rgba(140, 192, 248, 0.3);
+          inset 4px 4px 12px rgba(var(--black-rgb), 0.4),
+          inset -4px -4px 12px rgba(var(--blue-light-rgb), 0.1);
+        border: 1px solid rgba(var(--blue-light-rgb), 0.3);
       }
       .video-placeholder::before {
         content: "";
@@ -496,7 +441,7 @@
         inset: 0;
         background-image: radial-gradient(
           circle at center,
-          rgba(255, 255, 255, 0.08) 1px,
+          rgba(var(--white-rgb), 0.08) 1px,
           transparent 1px
         );
         background-size: 50px 50px;
@@ -504,25 +449,25 @@
       .video-play-btn {
         width: 72px;
         height: 72px;
-        background: rgba(255, 255, 255, 0.85);
+        background: rgba(var(--white-rgb), 0.85);
         backdrop-filter: blur(12px);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 2px solid rgba(255, 255, 255, 0.9);
+        border: 2px solid rgba(var(--white-rgb), 0.9);
         transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         box-shadow:
-          0 8px 24px rgba(0, 0, 0, 0.4),
-          inset 0 4px 8px rgba(255, 255, 255, 0.5);
+          0 8px 24px rgba(var(--black-rgb), 0.4),
+          inset 0 4px 8px rgba(var(--white-rgb), 0.5);
         z-index: 1;
       }
       .video-placeholder:hover .video-play-btn {
         transform: scale(1.1);
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(var(--white-rgb), 0.95);
         box-shadow:
-          0 12px 32px rgba(140, 192, 248, 0.6),
-          inset 0 4px 8px rgba(255, 255, 255, 0.6);
+          0 12px 32px rgba(var(--blue-light-rgb), 0.6),
+          inset 0 4px 8px rgba(var(--white-rgb), 0.6);
       }
       .video-progress-bar {
         position: absolute;
@@ -530,7 +475,7 @@
         left: 0;
         right: 0;
         height: 48px;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        background: linear-gradient(to top, rgba(var(--black-rgb), 0.8), transparent);
         display: flex;
         align-items: flex-end;
         padding: 0 16px 12px;
@@ -543,7 +488,7 @@
       .video-progress-track {
         width: 100%;
         height: 4px;
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(var(--white-rgb), 0.2);
         border-radius: 999px;
         overflow: hidden;
       }
@@ -551,7 +496,7 @@
         width: 33%;
         height: 100%;
         background: var(--blue-light);
-        box-shadow: 0 0 8px rgba(140, 192, 248, 0.8);
+        box-shadow: 0 0 8px rgba(var(--blue-light-rgb), 0.8);
       }
 
       /* === 3D 沙盒区域 === */
@@ -560,14 +505,14 @@
         aspect-ratio: 16/9;
         background: radial-gradient(
           circle at center,
-          rgba(159, 216, 200, 0.2) 0%,
-          rgba(209, 238, 229, 0.4) 100%
+          rgba(var(--green-rgb), 0.2) 0%,
+          rgba(var(--green-lightest-rgb), 0.4) 100%
         );
         border-radius: 16px;
         box-shadow:
-          inset 4px 4px 12px rgba(94, 182, 157, 0.2),
-          inset -4px -4px 12px rgba(255, 255, 255, 0.8);
-        border: 1px solid rgba(159, 216, 200, 0.5);
+          inset 4px 4px 12px rgba(var(--green-rgb), 0.2),
+          inset -4px -4px 12px rgba(var(--white-rgb), 0.8);
+        border: 1px solid rgba(var(--green-light-rgb), 0.5);
         position: relative;
         overflow: hidden;
         display: flex;
@@ -583,13 +528,13 @@
           linear-gradient(
             to bottom,
             transparent 49%,
-            rgba(94, 182, 157, 0.3) 50%,
+            rgba(var(--green-rgb), 0.3) 50%,
             transparent 51%
           ),
           linear-gradient(
             to right,
             transparent 49%,
-            rgba(94, 182, 157, 0.3) 50%,
+            rgba(var(--green-rgb), 0.3) 50%,
             transparent 51%
           );
         background-size: 40px 40px;
@@ -608,7 +553,7 @@
       .sandbox-icon {
         animation: bounce 2s infinite;
         color: var(--green);
-        filter: drop-shadow(0 2px 4px rgba(94, 182, 157, 0.3));
+        filter: drop-shadow(0 2px 4px rgba(var(--green-rgb), 0.3));
       }
       @keyframes bounce {
         0%,
@@ -628,20 +573,20 @@
       }
       .btn-primary {
         padding: 10px 28px;
-        background: linear-gradient(135deg, var(--green) 0%, #3e8e7a 100%);
-        color: #fff;
+        background: linear-gradient(135deg, var(--green) 0%, var(--green) 100%);
+        color: var(--white);
         border: none;
         border-radius: 999px;
         font-size: 14px;
         font-weight: 600;
         cursor: pointer;
-        box-shadow: 0 4px 12px rgba(94, 182, 157, 0.35);
+        box-shadow: 0 4px 12px rgba(var(--green-rgb), 0.35);
         transition: all 0.2s ease;
         margin-top: 8px;
       }
       .btn-primary:hover {
-        background: linear-gradient(135deg, #7ad1b9 0%, var(--green) 100%);
-        box-shadow: 0 6px 16px rgba(94, 182, 157, 0.45);
+        background: linear-gradient(135deg, var(--green-light) 0%, var(--green) 100%);
+        box-shadow: 0 6px 16px rgba(var(--green-rgb), 0.45);
         transform: translateY(-2px);
       }
 
@@ -665,7 +610,7 @@
         font-size: 18px;
         font-weight: 800;
         cursor: pointer;
-        box-shadow: 0 4px 16px rgba(252, 172, 125, 0.4);
+        box-shadow: 0 4px 16px rgba(var(--orange-rgb), 0.4);
         transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         display: flex;
         align-items: center;
@@ -677,7 +622,7 @@
           var(--yellow) 0%,
           var(--orange) 100%
         );
-        box-shadow: 0 8px 24px rgba(252, 172, 125, 0.6);
+        box-shadow: 0 8px 24px rgba(var(--orange-rgb), 0.6);
         transform: translateY(-4px);
       }
 
@@ -693,16 +638,16 @@
         font-size: 10px;
         font-weight: 800;
         border-radius: 6px;
-        border: 1px solid rgba(159, 216, 200, 0.6);
+        border: 1px solid rgba(var(--green-light-rgb), 0.6);
         letter-spacing: 0.05em;
-        box-shadow: 0 2px 4px rgba(94, 182, 157, 0.2);
+        box-shadow: 0 2px 4px rgba(var(--green-rgb), 0.2);
       }
 
       /* === 右侧边栏增强版 (恢复原左右布局并保留波点) === */
       .sidebar-top-section {
         position: relative;
         flex-shrink: 0;
-        border-bottom: 1px dashed rgba(196, 168, 130, 0.3);
+        border-bottom: 1px dashed rgba(var(--border-strong-rgb), 0.3);
       }
 
       .sidebar-top-banner {
@@ -710,8 +655,8 @@
         inset: 0;
         background: linear-gradient(
           135deg,
-          rgba(255, 236, 179, 0.3) 0%,
-          rgba(251, 217, 196, 0.3) 100%
+          rgba(var(--yellow-light-rgb), 0.3) 0%,
+          rgba(var(--orange-warm-rgb), 0.3) 100%
         );
         z-index: 0;
         overflow: hidden;
@@ -729,7 +674,7 @@
         display: flex;
         align-items: center;
         gap: 6px;
-        background: rgba(255, 255, 255, 0.6);
+        background: rgba(var(--white-rgb), 0.6);
         backdrop-filter: blur(8px);
         color: var(--brown-dark);
         text-decoration: none;
@@ -738,14 +683,14 @@
         padding: 6px 14px;
         border-radius: 999px;
         transition: all 0.2s ease;
-        border: 1px solid rgba(255, 255, 255, 0.8);
-        box-shadow: 0 4px 12px rgba(196, 168, 130, 0.4);
+        border: 1px solid rgba(var(--white-rgb), 0.8);
+        box-shadow: 0 4px 12px rgba(var(--border-strong-rgb), 0.4);
       }
       .sidebar-back a:hover {
-        background: rgba(255, 255, 255, 0.9);
+        background: rgba(var(--white-rgb), 0.9);
         color: var(--brown-medium);
         transform: translateY(-1px);
-        box-shadow: 0 6px 16px rgba(196, 168, 130, 0.5);
+        box-shadow: 0 6px 16px rgba(var(--border-strong-rgb), 0.5);
       }
 
       .sidebar-progress {
@@ -757,12 +702,12 @@
         z-index: 1;
       }
       .sidebar-progress-glass {
-        background: rgba(255, 255, 255, 0.55);
+        background: rgba(var(--white-rgb), 0.55);
         backdrop-filter: blur(10px);
         border-radius: 20px;
         padding: 20px 24px;
-        border: 1px solid rgba(255, 255, 255, 0.7);
-        box-shadow: 0 4px 12px rgba(196, 168, 130, 0.15);
+        border: 1px solid rgba(var(--white-rgb), 0.7);
+        box-shadow: 0 4px 12px rgba(var(--border-strong-rgb), 0.15);
       }
       .sidebar-progress-title {
         font-size: 15px;
@@ -788,7 +733,7 @@
         justify-content: center;
         background: var(--bg-canvas);
         border-radius: 50%;
-        box-shadow: 0 4px 8px rgba(196, 168, 130, 0.2);
+        box-shadow: 0 4px 8px rgba(var(--border-strong-rgb), 0.2);
         padding: 4px;
       }
       .ring-progress svg {
@@ -798,7 +743,7 @@
       }
       .ring-progress .ring-bg {
         fill: none;
-        stroke: rgba(196, 168, 130, 0.2);
+        stroke: rgba(var(--border-strong-rgb), 0.2);
         stroke-width: 3;
       }
       .ring-progress .ring-fill {
@@ -807,7 +752,7 @@
         stroke-width: 3;
         stroke-linecap: round;
         stroke-dasharray: 60, 100;
-        filter: drop-shadow(0 2px 4px rgba(252, 172, 125, 0.4));
+        filter: drop-shadow(0 2px 4px rgba(var(--orange-rgb), 0.4));
       }
       .ring-progress .ring-label {
         position: absolute;
@@ -829,7 +774,7 @@
           var(--blue-light) 100%
         );
         border: 2px solid var(--bg-canvas);
-        box-shadow: 0 2px 4px rgba(0, 102, 204, 0.3);
+        box-shadow: 0 2px 4px rgba(var(--blue-rgb), 0.3);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -869,7 +814,7 @@
           var(--orange-mist)
         );
         color: var(--orange);
-        box-shadow: 0 2px 6px rgba(252, 172, 125, 0.15);
+        box-shadow: 0 2px 6px rgba(var(--orange-rgb), 0.15);
       }
 
       /* === 加载动画 (复用 c2v/sandbox3d 风格) === */
@@ -890,9 +835,9 @@
         border-radius: 9999px;
         background: radial-gradient(
           circle,
-          rgba(190, 137, 68, 0.25) 0%,
-          rgba(190, 137, 68, 0.08) 46%,
-          rgba(190, 137, 68, 0) 72%
+          rgba(var(--brown-gold-rgb), 0.25) 0%,
+          rgba(var(--brown-gold-rgb), 0.08) 46%,
+          rgba(var(--brown-gold-rgb), 0) 72%
         );
         filter: blur(14px);
         animation: gen-halo-pulse 2s ease-in-out infinite;
@@ -912,7 +857,7 @@
         width: 48px;
         height: 48px;
         border-radius: 9999px;
-        border: 4px solid rgba(190, 137, 68, 0.2);
+        border: 4px solid rgba(var(--brown-gold-rgb), 0.2);
         border-top-color: var(--brown-gold);
         animation: gen-spin 0.9s linear infinite;
         z-index: 1;
@@ -990,7 +935,7 @@
         border: 2px solid transparent;
         padding: 0 32px 0 14px;
         background:
-          linear-gradient(rgba(255, 253, 244, 0.95), rgba(255, 253, 244, 0.95))
+          linear-gradient(rgba(var(--surface-soft-rgb), 0.95), rgba(var(--surface-soft-rgb), 0.95))
             padding-box,
           linear-gradient(135deg, var(--blue-lighter), var(--blue-light))
             border-box;
@@ -1003,20 +948,20 @@
           border-color 200ms ease,
           box-shadow 200ms ease;
         box-shadow:
-          0 4px 12px rgba(0, 102, 204, 0.15),
-          0 2px 6px rgba(196, 168, 130, 0.15);
+          0 4px 12px rgba(var(--blue-rgb), 0.15),
+          0 2px 6px rgba(var(--border-strong-rgb), 0.15);
       }
       .custom-select-trigger:hover {
         border-color: var(--blue-lighter);
         box-shadow:
-          0 6px 16px rgba(0, 102, 204, 0.2),
-          0 2px 6px rgba(196, 168, 130, 0.15);
+          0 6px 16px rgba(var(--blue-rgb), 0.2),
+          0 2px 6px rgba(var(--border-strong-rgb), 0.15);
       }
       .custom-select-trigger.open {
         border-color: var(--blue-light);
         box-shadow:
-          0 4px 12px rgba(0, 102, 204, 0.15),
-          0 0 0 3px rgba(140, 192, 248, 0.2);
+          0 4px 12px rgba(var(--blue-rgb), 0.15),
+          0 0 0 3px rgba(var(--blue-light-rgb), 0.2);
       }
       .custom-select-arrow {
         position: absolute;
@@ -1050,12 +995,12 @@
         right: 0;
         z-index: 100;
         border-radius: 16px;
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(var(--white-rgb), 0.95);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         box-shadow:
-          0 8px 32px rgba(0, 102, 204, 0.12),
-          0 2px 8px rgba(139, 99, 71, 0.08);
+          0 8px 32px rgba(var(--blue-rgb), 0.12),
+          0 2px 8px rgba(var(--brown-medium-rgb), 0.08);
         border: 1.5px solid var(--blue-lighter);
         padding: 6px;
         animation: csDropdownSlideIn 200ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -1123,8 +1068,8 @@
         --theme-grad-hover-start: var(--orange-light);
         --theme-grad-hover-end: var(--orange);
         --theme-icon-color: var(--orange);
-        background: rgba(255, 233, 221, 0.75);
-        border-color: rgba(252, 172, 125, 0.4);
+        background: rgba(var(--peach-light-rgb), 0.75);
+        border-color: rgba(var(--orange-rgb), 0.4);
       }
 
       .quiz-body {
@@ -1145,10 +1090,10 @@
         flex: 1;
         height: 10px;
         border-radius: 999px;
-        background: rgba(196, 168, 130, 0.15);
+        background: rgba(var(--border-strong-rgb), 0.15);
         box-shadow:
-          inset 2px 2px 4px rgba(228, 200, 166, 0.3),
-          inset -2px -2px 4px rgba(255, 255, 255, 0.8);
+          inset 2px 2px 4px rgba(var(--border-muted-rgb), 0.3),
+          inset -2px -2px 4px rgba(var(--white-rgb), 0.8);
         overflow: hidden;
       }
       .quiz-mastery-fill {
@@ -1156,11 +1101,11 @@
         border-radius: 999px;
         background: linear-gradient(90deg, var(--orange), var(--yellow));
         transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        box-shadow: 0 0 8px rgba(252, 172, 125, 0.4);
+        box-shadow: 0 0 8px rgba(var(--orange-rgb), 0.4);
       }
       .quiz-mastery-fill.passed {
         background: linear-gradient(90deg, var(--green), var(--green-light));
-        box-shadow: 0 0 8px rgba(94, 182, 157, 0.4);
+        box-shadow: 0 0 8px rgba(var(--green-rgb), 0.4);
       }
       .quiz-mastery-label {
         font-size: 16px;
@@ -1206,7 +1151,7 @@
       .quiz-tab.active {
         background: linear-gradient(135deg, var(--orange-light), var(--orange));
         border-color: var(--orange);
-        box-shadow: 0 4px 12px rgba(252, 172, 125, 0.3);
+        box-shadow: 0 4px 12px rgba(var(--orange-rgb), 0.3);
       }
       .quiz-tab-title {
         font-size: 16px;
@@ -1214,7 +1159,7 @@
         color: var(--brown-medium);
       }
       .quiz-tab.active .quiz-tab-title {
-        color: #fff;
+        color: var(--white);
       }
       .quiz-tab-score {
         font-size: 13px;
@@ -1222,13 +1167,13 @@
         color: var(--orange);
       }
       .quiz-tab.active .quiz-tab-score {
-        color: rgba(255, 255, 255, 0.9);
+        color: rgba(var(--white-rgb), 0.9);
       }
       .quiz-tab.passed .quiz-tab-score {
         color: var(--green);
       }
       .quiz-tab.active.passed .quiz-tab-score {
-        color: #fff;
+        color: var(--white);
       }
 
       /* 「+ 新测验」Tab */
@@ -1255,13 +1200,13 @@
         background: var(--orange-mist);
         transform: translateY(-2px);
         border-style: solid;
-        box-shadow: 0 4px 12px rgba(252, 172, 125, 0.25);
+        box-shadow: 0 4px 12px rgba(var(--orange-rgb), 0.25);
       }
       .quiz-tab-new:disabled {
         opacity: 0.4;
         cursor: not-allowed;
         transform: none !important;
-        border-color: rgba(196, 168, 130, 0.25);
+        border-color: rgba(var(--border-strong-rgb), 0.25);
         color: var(--brown-light);
       }
 
@@ -1288,8 +1233,8 @@
         justify-content: center;
         transition: all 0.2s ease;
         box-shadow:
-          2px 2px 6px rgba(228, 200, 166, 0.2),
-          -2px -2px 6px rgba(255, 255, 255, 0.6);
+          2px 2px 6px rgba(var(--border-muted-rgb), 0.2),
+          -2px -2px 6px rgba(var(--white-rgb), 0.6);
         color: var(--brown-medium);
         font-size: 18px;
         font-weight: 700;
@@ -1298,8 +1243,8 @@
         background: var(--orange-mist);
         transform: translateY(-1px);
         box-shadow:
-          3px 3px 8px rgba(228, 200, 166, 0.3),
-          -3px -3px 8px rgba(255, 255, 255, 0.7);
+          3px 3px 8px rgba(var(--border-muted-rgb), 0.3),
+          -3px -3px 8px rgba(var(--white-rgb), 0.7);
         color: var(--brown-dark);
       }
       .quiz-nav-btn:disabled {
@@ -1326,17 +1271,17 @@
         justify-content: center;
         transition: all 0.2s ease;
         box-shadow:
-          2px 2px 6px rgba(228, 200, 166, 0.2),
-          -2px -2px 6px rgba(255, 255, 255, 0.6);
+          2px 2px 6px rgba(var(--border-muted-rgb), 0.2),
+          -2px -2px 6px rgba(var(--white-rgb), 0.6);
         color: var(--brown-medium);
         font-size: 20px;
       }
       .quiz-fav-btn:hover {
         transform: translateY(-2px);
         box-shadow:
-          3px 3px 8px rgba(228, 200, 166, 0.3),
-          -3px -3px 8px rgba(255, 255, 255, 0.7);
-        color: #e6a817;
+          3px 3px 8px rgba(var(--border-muted-rgb), 0.3),
+          -3px -3px 8px rgba(var(--white-rgb), 0.7);
+        color: var(--yellow-gold);
         background: var(--yellow-lighter);
         border-color: var(--yellow);
       }
@@ -1346,12 +1291,12 @@
           var(--yellow-lighter),
           var(--yellow-light)
         );
-        color: #e6a817;
+        color: var(--yellow-gold);
         border-color: var(--yellow);
         box-shadow:
-          inset 2px 2px 4px rgba(228, 200, 166, 0.2),
-          inset -2px -2px 4px rgba(255, 255, 255, 0.6),
-          0 0 0 3px rgba(255, 224, 131, 0.35);
+          inset 2px 2px 4px rgba(var(--border-muted-rgb), 0.2),
+          inset -2px -2px 4px rgba(var(--white-rgb), 0.6),
+          0 0 0 3px rgba(var(--yellow-rgb), 0.35);
       }
 
       /* 题干 */
@@ -1379,8 +1324,8 @@
         border: 2px solid var(--yellow-light);
         background: var(--bg-canvas);
         box-shadow:
-          2px 2px 6px rgba(228, 200, 166, 0.2),
-          -2px -2px 6px rgba(255, 255, 255, 0.6);
+          2px 2px 6px rgba(var(--border-muted-rgb), 0.2),
+          -2px -2px 6px rgba(var(--white-rgb), 0.6);
         font-family: inherit;
         font-size: 15px;
         color: var(--text-primary);
@@ -1392,42 +1337,42 @@
         background: var(--yellow-mist);
         transform: translateY(-2px);
         box-shadow:
-          3px 3px 8px rgba(228, 200, 166, 0.3),
-          -3px -3px 8px rgba(255, 255, 255, 0.7);
+          3px 3px 8px rgba(var(--border-muted-rgb), 0.3),
+          -3px -3px 8px rgba(var(--white-rgb), 0.7);
       }
       .quiz-option.selected {
         border-color: var(--yellow);
         background: var(--yellow-lighter);
         box-shadow:
-          inset 2px 2px 4px rgba(228, 200, 166, 0.2),
-          inset -2px -2px 4px rgba(255, 255, 255, 0.6),
-          0 0 0 3px rgba(255, 224, 131, 0.18);
+          inset 2px 2px 4px rgba(var(--border-muted-rgb), 0.2),
+          inset -2px -2px 4px rgba(var(--white-rgb), 0.6),
+          0 0 0 3px rgba(var(--yellow-rgb), 0.18);
         transform: translateY(0);
       }
       .quiz-option.disabled {
         cursor: default;
       }
       .quiz-option.correct {
-        border-color: rgba(71, 130, 17, 0.5);
-        background: #effce3;
-        box-shadow: inset 1px 1px 3px rgba(71, 130, 17, 0.1);
+        border-color: rgba(var(--success-text-rgb), 0.5);
+        background: var(--success-bg);
+        box-shadow: inset 1px 1px 3px rgba(var(--success-text-rgb), 0.1);
       }
       .quiz-option.wrong {
-        border-color: rgba(216, 59, 39, 0.4);
-        background: #ffedea;
-        box-shadow: inset 1px 1px 3px rgba(216, 59, 39, 0.05);
+        border-color: rgba(var(--danger-rgb), 0.4);
+        background: var(--danger-soft);
+        box-shadow: inset 1px 1px 3px rgba(var(--danger-rgb), 0.05);
       }
       .quiz-option.correct .option-label {
-        background: linear-gradient(135deg, #9ad050, #6aab2a);
-        color: #fff;
+        background: linear-gradient(135deg, var(--green-light), var(--green-vivid));
+        color: var(--white);
       }
       .quiz-option.wrong {
-        border-color: rgba(220, 50, 45, 0.28);
-        background: #fef0ee;
+        border-color: rgba(var(--danger-strong-rgb), 0.28);
+        background: var(--danger-surface);
       }
       .quiz-option.wrong .option-label {
-        background: linear-gradient(135deg, #f59185, #e85c5c);
-        color: #fff;
+        background: linear-gradient(135deg, var(--danger-light), var(--danger));
+        color: var(--white);
       }
       .option-label {
         display: flex;
@@ -1442,8 +1387,8 @@
           var(--yellow-light)
         );
         box-shadow:
-          3px 3px 6px rgba(228, 200, 166, 0.25),
-          -3px -3px 6px rgba(255, 255, 255, 0.9);
+          3px 3px 6px rgba(var(--border-muted-rgb), 0.25),
+          -3px -3px 6px rgba(var(--white-rgb), 0.9);
         font-size: 14px;
         font-weight: 700;
         color: var(--brown-medium);
@@ -1454,8 +1399,8 @@
         background: linear-gradient(135deg, var(--yellow-light), var(--yellow));
         color: var(--brown-dark);
         box-shadow:
-          inset 2px 2px 4px rgba(0, 0, 0, 0.1),
-          inset -2px -2px 4px rgba(255, 255, 255, 0.3);
+          inset 2px 2px 4px rgba(var(--black-rgb), 0.1),
+          inset -2px -2px 4px rgba(var(--white-rgb), 0.3);
       }
       .option-text {
         flex: 1;
@@ -1470,7 +1415,7 @@
         flex-shrink: 0;
       }
       .option-badge.correct-badge {
-        background: #d4f4c0;
+        background: var(--green-pale);
         color: var(--success-text);
       }
       .option-badge.wrong-badge {
@@ -1498,7 +1443,7 @@
         font-size: 15px;
         font-weight: 700;
         cursor: pointer;
-        box-shadow: 0 4px 16px rgba(252, 172, 125, 0.35);
+        box-shadow: 0 4px 16px rgba(var(--orange-rgb), 0.35);
         transition: all 220ms ease;
         display: flex;
         align-items: center;
@@ -1506,8 +1451,8 @@
         gap: 8px;
       }
       .quiz-submit-btn:hover:not(:disabled) {
-        background: linear-gradient(135deg, #fdbc97, #fcac7d);
-        box-shadow: 0 6px 24px rgba(252, 172, 125, 0.45);
+        background: linear-gradient(135deg, var(--orange-light), var(--orange));
+        box-shadow: 0 6px 24px rgba(var(--orange-rgb), 0.45);
         transform: translateY(-1px);
       }
       .quiz-submit-btn:disabled {
@@ -1532,7 +1477,7 @@
           var(--green-mist),
           var(--green-lighter)
         );
-        border: 1.5px solid rgba(159, 216, 200, 0.5);
+        border: 1.5px solid rgba(var(--green-light-rgb), 0.5);
       }
       .quiz-result-panel.result-fail {
         background: linear-gradient(
@@ -1540,7 +1485,7 @@
           var(--orange-mist),
           var(--orange-lighter)
         );
-        border: 1.5px solid rgba(252, 172, 125, 0.4);
+        border: 1.5px solid rgba(var(--orange-rgb), 0.4);
       }
       .quiz-result-icon {
         font-size: 48px;
@@ -1593,20 +1538,20 @@
         border-radius: 999px;
         border: none;
         background: linear-gradient(135deg, var(--orange-light), var(--orange));
-        color: #fff;
+        color: var(--white);
         font-family: inherit;
         font-size: 15px;
         font-weight: 700;
         cursor: pointer;
-        box-shadow: 0 4px 12px rgba(252, 172, 125, 0.4);
+        box-shadow: 0 4px 12px rgba(var(--orange-rgb), 0.4);
         transition: all 220ms ease;
         display: flex;
         align-items: center;
         gap: 8px;
       }
       .quiz-retry-btn:hover {
-        background: linear-gradient(135deg, var(--orange), #e8944a);
-        box-shadow: 0 6px 16px rgba(252, 172, 125, 0.5);
+        background: linear-gradient(135deg, var(--orange), var(--accent-warm));
+        box-shadow: 0 6px 16px rgba(var(--orange-rgb), 0.5);
         transform: translateY(-2px);
       }
 
@@ -1622,7 +1567,7 @@
       }
       .quiz-idle-icon {
         font-size: 56px;
-        filter: drop-shadow(0 4px 8px rgba(252, 172, 125, 0.3));
+        filter: drop-shadow(0 4px 8px rgba(var(--orange-rgb), 0.3));
       }
       .quiz-idle-title {
         font-size: 18px;
@@ -1645,7 +1590,7 @@
         font-size: 16px;
         font-weight: 700;
         cursor: pointer;
-        box-shadow: 0 4px 16px rgba(252, 172, 125, 0.4);
+        box-shadow: 0 4px 16px rgba(var(--orange-rgb), 0.4);
         transition: all 220ms ease;
         display: flex;
         align-items: center;
@@ -1653,8 +1598,8 @@
         margin-top: 8px;
       }
       .quiz-start-btn:hover {
-        background: linear-gradient(135deg, #fdbc97, #fcac7d);
-        box-shadow: 0 6px 24px rgba(252, 172, 125, 0.5);
+        background: linear-gradient(135deg, var(--orange-light), var(--orange));
+        box-shadow: 0 6px 24px rgba(var(--orange-rgb), 0.5);
         transform: translateY(-2px);
       }
 
@@ -1678,7 +1623,7 @@
         font-size: 15px;
         font-weight: 700;
         backdrop-filter: blur(12px);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 8px 32px rgba(var(--black-rgb), 0.12);
         transition:
           transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
           visibility 0s 0.35s;
@@ -1693,19 +1638,19 @@
           visibility 0s 0s;
       }
       .quiz-toast.warn {
-        background: rgba(251, 221, 214, 0.95);
+        background: rgba(var(--peach-soft-rgb), 0.95);
         color: var(--warn-text);
-        border: 1.5px solid rgba(200, 74, 43, 0.2);
+        border: 1.5px solid rgba(var(--danger-muted-rgb), 0.2);
       }
       .quiz-toast.success {
-        background: rgba(239, 252, 227, 0.95);
+        background: rgba(var(--green-faint-rgb), 0.95);
         color: var(--success-text);
-        border: 1.5px solid rgba(71, 130, 17, 0.2);
+        border: 1.5px solid rgba(var(--success-text-rgb), 0.2);
       }
       .quiz-toast.info {
-        background: rgba(255, 246, 219, 0.95);
+        background: rgba(var(--yellow-faint-rgb), 0.95);
         color: var(--brown-dark);
-        border: 1.5px solid rgba(255, 224, 131, 0.4);
+        border: 1.5px solid rgba(var(--yellow-rgb), 0.4);
       }
 
       /* 确认对话框 */
@@ -1734,17 +1679,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba(255, 253, 244, 0.7);
+        background: rgba(var(--surface-soft-rgb), 0.7);
         backdrop-filter: blur(6px);
         animation: quizModalFadeIn 0.2s ease;
       }
       .quiz-confirm-card {
         width: min(420px, calc(100vw - 48px));
         border-radius: 20px;
-        background: rgba(255, 255, 255, 0.92);
+        background: rgba(var(--white-rgb), 0.92);
         backdrop-filter: blur(20px);
         box-shadow: var(--shadow-hover);
-        border: 1.5px solid rgba(255, 236, 179, 0.5);
+        border: 1.5px solid rgba(var(--yellow-light-rgb), 0.5);
         padding: 32px;
         display: flex;
         flex-direction: column;
@@ -1774,7 +1719,7 @@
       .quiz-confirm-cancel {
         padding: 10px 24px;
         border-radius: 999px;
-        border: 1.5px solid rgba(196, 168, 130, 0.3);
+        border: 1.5px solid rgba(var(--border-strong-rgb), 0.3);
         background: var(--bg-canvas);
         color: var(--brown-medium);
         font-family: inherit;
@@ -1792,16 +1737,16 @@
         border-radius: 999px;
         border: none;
         background: linear-gradient(135deg, var(--blue-light), var(--blue));
-        color: #fff;
+        color: var(--white);
         font-family: inherit;
         font-size: 14px;
         font-weight: 700;
         cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+        box-shadow: 0 4px 12px rgba(var(--blue-rgb), 0.3);
         transition: all 0.2s ease;
       }
       .quiz-confirm-ok:hover {
-        box-shadow: 0 6px 16px rgba(0, 102, 204, 0.4);
+        box-shadow: 0 6px 16px rgba(var(--blue-rgb), 0.4);
         transform: translateY(-1px);
       }
 
@@ -1810,7 +1755,7 @@
         width: 100%;
         height: 6px;
         border-radius: 999px;
-        background: rgba(196, 168, 130, 0.15);
+        background: rgba(var(--border-strong-rgb), 0.15);
         overflow: hidden;
         margin-bottom: 4px;
       }
@@ -1819,7 +1764,7 @@
         border-radius: 999px;
         background: linear-gradient(90deg, var(--orange), var(--yellow));
         transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        box-shadow: 0 0 6px rgba(252, 172, 125, 0.3);
+        box-shadow: 0 0 6px rgba(var(--orange-rgb), 0.3);
       }
 
       /* 完成按钮禁用态 */
@@ -1830,7 +1775,7 @@
       }
       .btn-finish.disabled-look:hover {
         transform: none;
-        box-shadow: 0 4px 16px rgba(252, 172, 125, 0.4);
+        box-shadow: 0 4px 16px rgba(var(--orange-rgb), 0.4);
       }
     </style>
   </head>
@@ -1850,7 +1795,7 @@
               );
               color: var(--brown-deep);
               border: none;
-              box-shadow: 0 4px 12px rgba(252, 172, 125, 0.3);
+              box-shadow: 0 4px 12px rgba(var(--orange-rgb), 0.3);
               padding: 6px 18px;
               border-radius: 12px;
               font-size: 14px;
@@ -2067,7 +2012,7 @@ print(<span class="code-comment">f"</span><span class="code-string" style="color
                 align-items: center;
                 justify-content: center;
                 font-size: 18px;
-                box-shadow: 0 4px 8px rgba(255, 192, 138, 0.58);
+                box-shadow: 0 4px 8px rgba(var(--orange-soft-rgb), 0.58);
               "
             >
               🤖
@@ -2145,14 +2090,14 @@ print(<span class="code-comment">f"</span><span class="code-string" style="color
               left: 20px;
               right: 20px;
               height: 56px;
-              background: rgba(255, 253, 244, 0.8);
+              background: rgba(var(--surface-soft-rgb), 0.8);
               backdrop-filter: blur(12px);
               -webkit-backdrop-filter: blur(12px);
               border-radius: 20px;
-              border: 2px solid rgba(255, 192, 138, 0.72);
+              border: 2px solid rgba(var(--orange-soft-rgb), 0.72);
               box-shadow:
-                0 8px 16px rgba(196, 168, 130, 0.15),
-                inset 0 2px 4px rgba(255, 255, 255, 0.8);
+                0 8px 16px rgba(var(--border-strong-rgb), 0.15),
+                inset 0 2px 4px rgba(var(--white-rgb), 0.8);
               display: flex;
               align-items: center;
               padding: 0 8px 0 20px;
@@ -2184,7 +2129,7 @@ print(<span class="code-comment">f"</span><span class="code-string" style="color
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
-                box-shadow: 0 2px 8px rgba(255, 192, 138, 0.72);
+                box-shadow: 0 2px 8px rgba(var(--orange-soft-rgb), 0.72);
                 transition:
                   transform 0.2s ease,
                   background 0.2s;
@@ -2271,6 +2216,16 @@ print(<span class="code-comment">f"</span><span class="code-string" style="color
           ],
         };
 
+        const rootStyles = getComputedStyle(document.documentElement);
+        const mindmapNodeColor =
+          rootStyles.getPropertyValue("--brown-gold").trim();
+        const mindmapBorderColor =
+          rootStyles.getPropertyValue("--border-strong").trim();
+        const mindmapTextColor =
+          rootStyles.getPropertyValue("--text-primary").trim();
+        const mindmapLineColor =
+          rootStyles.getPropertyValue("--code-border").trim();
+
         const option = {
           tooltip: {
             trigger: "item",
@@ -2286,8 +2241,8 @@ print(<span class="code-comment">f"</span><span class="code-string" style="color
               right: "25%",
               symbolSize: 10,
               itemStyle: {
-                color: "#be8944",
-                borderColor: "#c4a882",
+                color: mindmapNodeColor,
+                borderColor: mindmapBorderColor,
               },
               label: {
                 position: "left",
@@ -2295,7 +2250,7 @@ print(<span class="code-comment">f"</span><span class="code-string" style="color
                 align: "right",
                 fontSize: 14,
                 fontFamily: "Inter",
-                color: "#2c1608",
+                color: mindmapTextColor,
               },
               leaves: {
                 label: {
@@ -2311,7 +2266,7 @@ print(<span class="code-comment">f"</span><span class="code-string" style="color
               animationDuration: 550,
               animationDurationUpdate: 750,
               lineStyle: {
-                color: "#e4c8a6",
+                color: mindmapLineColor,
                 width: 2,
                 curveness: 0.5,
               },
@@ -2941,7 +2896,7 @@ print(<span class="code-comment">f"</span><span class="code-string" style="color
             html +=
               '<div style="display:flex;gap:12px;justify-content:center;margin-top:20px;">';
             html +=
-              '<button class="quiz-retry-btn" style="background:#fffaf2;color:var(--brown-dark);border:2px solid var(--orange-lighter);box-shadow:2px 2px 5px rgba(228,200,166,0.12)" onclick="quizCurrentIndex=0; renderQuizContent()">👀 查看答题详情</button>';
+              '<button class="quiz-retry-btn" style="background:var(--white)af2;color:var(--brown-dark);border:2px solid var(--orange-lighter);box-shadow:2px 2px 5px rgba(var(--border-muted-rgb), 0.12)" onclick="quizCurrentIndex=0; renderQuizContent()">👀 查看答题详情</button>';
             html += "</div>";
 
             html += "</div>";
@@ -3256,7 +3211,7 @@ print(<span class="code-comment">f"</span><span class="code-string" style="color
 
           // 显示3D内容 (mock iframe)
           area.innerHTML =
-            '<iframe title="3D Sandbox Result" class="gen-slide-up" srcdoc=\'<html><body style="margin:0;display:flex;align-items:center;justify-content:center;height:100vh;background:linear-gradient(135deg,#eaf8f3,#d1eee5);font-family:Inter,system-ui,sans-serif"><div style="text-align:center"><div style="font-size:72px;margin-bottom:16px">🧊</div><h2 style="color:#5c3d2e;font-size:24px">3D 模型: 变量与数据类型</h2><p style="color:#8b6347;margin-top:8px">交互式 3D 可视化已就绪</p></div></body></html>\' style="width:100%;height:100%;border:none;border-radius:16px;z-index:1;position:relative"></iframe>';
+            '<iframe title="3D Sandbox Result" class="gen-slide-up" srcdoc=\'<html><body style="margin:0;display:flex;align-items:center;justify-content:center;height:100vh;background:linear-gradient(135deg,#eaf8f3,var(--green-lighter));font-family:Inter,system-ui,sans-serif"><div style="text-align:center"><div style="font-size:72px;margin-bottom:16px">🧊</div><h2 style="color:#5c3d2e;font-size:24px">3D 模型: 变量与数据类型</h2><p style="color:#8b6347;margin-top:8px">交互式 3D 可视化已就绪</p></div></body></html>\' style="width:100%;height:100%;border:none;border-radius:16px;z-index:1;position:relative"></iframe>';
 
           // 恢复按钮
           btn.disabled = false;
