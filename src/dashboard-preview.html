@@ -105,7 +105,11 @@
         font-size: 48px;
         font-weight: 900;
         margin-bottom: 32px;
-        background: linear-gradient(135deg, var(--brown-dark) 0%, var(--accent-warm) 100%);
+        background: linear-gradient(
+          135deg,
+          var(--brown-dark) 0%,
+          var(--accent-warm) 100%
+        );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-shadow: 0 4px 12px rgba(var(--brown-gold-rgb), 0.2);
@@ -171,7 +175,10 @@
         border-radius: 20px;
         border: 2px solid transparent;
         background:
-          linear-gradient(rgba(var(--surface-soft-rgb), 0.95), rgba(var(--surface-soft-rgb), 0.95))
+          linear-gradient(
+              rgba(var(--surface-soft-rgb), 0.95),
+              rgba(var(--surface-soft-rgb), 0.95)
+            )
             padding-box,
           linear-gradient(135deg, var(--yellow-light), var(--orange-light))
             border-box;
@@ -525,7 +532,10 @@
       .task-pill {
         height: 52px;
         background:
-          linear-gradient(rgba(var(--surface-soft-rgb), 0.85), rgba(var(--surface-soft-rgb), 0.85))
+          linear-gradient(
+              rgba(var(--surface-soft-rgb), 0.85),
+              rgba(var(--surface-soft-rgb), 0.85)
+            )
             padding-box,
           linear-gradient(
               135deg,
@@ -560,7 +570,10 @@
           0 2px 4px rgba(var(--border-muted-rgb), 0.15);
         transform: translateY(-2px) scale(1.02);
         background:
-          linear-gradient(rgba(var(--surface-soft-rgb), 0.95), rgba(var(--surface-soft-rgb), 0.95))
+          linear-gradient(
+              rgba(var(--surface-soft-rgb), 0.95),
+              rgba(var(--surface-soft-rgb), 0.95)
+            )
             padding-box,
           linear-gradient(135deg, var(--yellow), rgba(var(--orange-rgb), 0.8))
             border-box;
@@ -645,16 +658,18 @@
       }
       .features-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 28px;
+        grid-template-columns: repeat(2, minmax(260px, 1fr));
+        gap: 24px;
+        align-items: start;
       }
 
       .feature-card {
+        min-height: 230px;
         border-radius: 24px;
-        padding: 28px;
+        padding: 22px;
         display: flex;
         flex-direction: column;
-        gap: 14px;
+        gap: 10px;
         cursor: pointer;
         transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         position: relative;
@@ -765,7 +780,7 @@
         align-items: center;
         gap: 10px;
         padding: 8px 16px;
-        background: rgba(var(--surface-soft-rgb),0.85);
+        background: rgba(var(--surface-soft-rgb), 0.85);
         border-radius: 14px;
         border: 1.5px solid rgba(var(--yellow-rgb), 0.4);
         box-shadow: 0 2px 8px rgba(var(--border-muted-rgb), 0.15);
@@ -816,7 +831,11 @@
         white-space: nowrap;
       }
       .plan-action-btn.create {
-        background: linear-gradient(135deg, rgba(var(--yellow-rgb), 0.6) 0%, rgba(var(--orange-rgb), 0.6) 100%);
+        background: linear-gradient(
+          135deg,
+          rgba(var(--yellow-rgb), 0.6) 0%,
+          rgba(var(--orange-rgb), 0.6) 100%
+        );
         color: var(--brown-dark);
         box-shadow: 0 2px 8px rgba(var(--orange-rgb), 0.2);
         border: 1.5px solid rgba(var(--orange-rgb), 0.35);
@@ -824,10 +843,18 @@
       .plan-action-btn.create:hover {
         transform: translateY(-1px);
         box-shadow: 0 4px 12px rgba(var(--orange-rgb), 0.35);
-        background: linear-gradient(135deg, rgba(var(--yellow-rgb), 0.75) 0%, rgba(var(--orange-rgb), 0.75) 100%);
+        background: linear-gradient(
+          135deg,
+          rgba(var(--yellow-rgb), 0.75) 0%,
+          rgba(var(--orange-rgb), 0.75) 100%
+        );
       }
       .plan-action-btn.switch {
-        background: linear-gradient(135deg, var(--yellow-light) 0%, var(--yellow) 100%);
+        background: linear-gradient(
+          135deg,
+          var(--yellow-light) 0%,
+          var(--yellow) 100%
+        );
         color: var(--brown-dark);
         box-shadow: 0 2px 8px rgba(var(--yellow-rgb), 0.3);
         border: 1.5px solid var(--yellow);
@@ -835,7 +862,11 @@
       .plan-action-btn.switch:hover {
         transform: translateY(-1px);
         box-shadow: 0 4px 12px rgba(var(--yellow-rgb), 0.4);
-        background: linear-gradient(135deg, var(--yellow) 0%, var(--accent-warning) 100%);
+        background: linear-gradient(
+          135deg,
+          var(--yellow) 0%,
+          var(--accent-warning) 100%
+        );
         border-color: var(--accent-warning);
       }
 
@@ -852,7 +883,9 @@
         background: rgba(var(--white-rgb), 0.95);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
-        box-shadow: 0 8px 32px rgba(var(--brown-medium-rgb), 0.12), 0 2px 8px rgba(var(--brown-medium-rgb), 0.08);
+        box-shadow:
+          0 8px 32px rgba(var(--brown-medium-rgb), 0.12),
+          0 2px 8px rgba(var(--brown-medium-rgb), 0.08);
         border: 1.5px solid var(--yellow-light);
         z-index: 200;
         padding: 8px;
@@ -913,7 +946,11 @@
       .switch-plan-item .plan-item-progress-fill {
         height: 100%;
         border-radius: 9999px;
-        background: linear-gradient(90deg, var(--orange) 0%, var(--yellow) 100%);
+        background: linear-gradient(
+          90deg,
+          var(--orange) 0%,
+          var(--yellow) 100%
+        );
         transition: width 0.4s ease;
       }
       .switch-plan-item .plan-item-progress-text {
@@ -985,7 +1022,11 @@
         padding: 0 36px;
         border: none;
         border-radius: 9999px;
-        background: linear-gradient(135deg, var(--yellow) 0%, var(--orange) 100%);
+        background: linear-gradient(
+          135deg,
+          var(--yellow) 0%,
+          var(--orange) 100%
+        );
         color: var(--brown-dark);
         font-family: inherit;
         font-size: 16px;
@@ -1000,7 +1041,11 @@
       .empty-state-cta:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 24px rgba(var(--orange-rgb), 0.45);
-        background: linear-gradient(135deg, var(--orange-light) 0%, var(--orange) 100%);
+        background: linear-gradient(
+          135deg,
+          var(--orange-light) 0%,
+          var(--orange) 100%
+        );
       }
 
       /* 演示切换开关 */
@@ -1059,44 +1104,58 @@
           active: true,
           days: [
             {
-              id: 1, day: 1, tasks: [
+              id: 1,
+              day: 1,
+              tasks: [
                 { id: 101, title: "学习时间复杂度", completed: true },
                 { id: 102, title: "理解递归思想", completed: true },
               ],
             },
             {
-              id: 2, day: 2, tasks: [
+              id: 2,
+              day: 2,
+              tasks: [
                 { id: 201, title: "数组与链表基础", completed: true },
                 { id: 202, title: "双指针核心技巧", completed: true },
                 { id: 203, title: "滑动窗口", completed: true },
               ],
             },
             {
-              id: 3, day: 3, tasks: [
+              id: 3,
+              day: 3,
+              tasks: [
                 { id: 301, title: "哈希表的应用", completed: true },
                 { id: 302, title: "初级排序算法解析", completed: true },
               ],
             },
             {
-              id: 4, day: 4, tasks: [
+              id: 4,
+              day: 4,
+              tasks: [
                 { id: 401, title: "栈与队列", completed: true },
                 { id: 402, title: "BFS入门", completed: true },
               ],
             },
             {
-              id: 5, day: 5, tasks: [
+              id: 5,
+              day: 5,
+              tasks: [
                 { id: 501, title: "DFS入门", completed: true },
                 { id: 502, title: "回溯法基础", completed: true },
               ],
             },
             {
-              id: 6, day: 6, tasks: [
+              id: 6,
+              day: 6,
+              tasks: [
                 { id: 601, title: "动态规划概念", completed: false },
                 { id: 602, title: "斐波那契数列DP", completed: false },
               ],
             },
             {
-              id: 7, day: 7, tasks: [
+              id: 7,
+              day: 7,
+              tasks: [
                 { id: 701, title: "贪心算法入门", completed: false },
                 { id: 702, title: "综合实战练习", completed: false },
               ],
@@ -1110,66 +1169,130 @@
           totalDays: 15,
           active: false,
           days: [
-            { id: 1, day: 1, tasks: [
-              { id: 801, title: "Java 集合框架概览", completed: true },
-              { id: 802, title: "ArrayList 源码阅读", completed: true },
-            ]},
-            { id: 2, day: 2, tasks: [
-              { id: 901, title: "LinkedList 实战", completed: true },
-              { id: 902, title: "Stack & Queue", completed: true },
-            ]},
-            { id: 3, day: 3, tasks: [
-              { id: 1001, title: "HashMap 原理", completed: true },
-              { id: 1002, title: "TreeMap 对比", completed: true },
-            ]},
-            { id: 4, day: 4, tasks: [
-              { id: 1101, title: "PriorityQueue 堆", completed: true },
-              { id: 1102, title: "Deque 双端队列", completed: true },
-            ]},
-            { id: 5, day: 5, tasks: [
-              { id: 1201, title: "Set 接口与实现", completed: true },
-              { id: 1202, title: "HashSet vs TreeSet", completed: true },
-            ]},
-            { id: 6, day: 6, tasks: [
-              { id: 1301, title: "Iterator 迭代器", completed: false },
-              { id: 1302, title: "Collections 工具类", completed: false },
-            ]},
-            { id: 7, day: 7, tasks: [
-              { id: 1401, title: "泛型与类型擦除", completed: false },
-              { id: 1402, title: "Comparable & Comparator", completed: false },
-            ]},
-            { id: 8, day: 8, tasks: [
-              { id: 1501, title: "二叉树基础", completed: false },
-              { id: 1502, title: "前中后序遍历", completed: false },
-            ]},
-            { id: 9, day: 9, tasks: [
-              { id: 1601, title: "二叉搜索树", completed: false },
-              { id: 1602, title: "AVL 树概念", completed: false },
-            ]},
-            { id: 10, day: 10, tasks: [
-              { id: 1701, title: "红黑树原理", completed: false },
-              { id: 1702, title: "TreeMap 源码分析", completed: false },
-            ]},
-            { id: 11, day: 11, tasks: [
-              { id: 1801, title: "图的表示方法", completed: false },
-              { id: 1802, title: "BFS & DFS", completed: false },
-            ]},
-            { id: 12, day: 12, tasks: [
-              { id: 1901, title: "最短路径算法", completed: false },
-              { id: 1902, title: "Dijkstra 实现", completed: false },
-            ]},
-            { id: 13, day: 13, tasks: [
-              { id: 2001, title: "并查集", completed: false },
-              { id: 2002, title: "最小生成树", completed: false },
-            ]},
-            { id: 14, day: 14, tasks: [
-              { id: 2101, title: "字典树 Trie", completed: false },
-              { id: 2102, title: "线段树基础", completed: false },
-            ]},
-            { id: 15, day: 15, tasks: [
-              { id: 2201, title: "综合实战演练", completed: false },
-              { id: 2202, title: "数据结构总复习", completed: false },
-            ]},
+            {
+              id: 1,
+              day: 1,
+              tasks: [
+                { id: 801, title: "Java 集合框架概览", completed: true },
+                { id: 802, title: "ArrayList 源码阅读", completed: true },
+              ],
+            },
+            {
+              id: 2,
+              day: 2,
+              tasks: [
+                { id: 901, title: "LinkedList 实战", completed: true },
+                { id: 902, title: "Stack & Queue", completed: true },
+              ],
+            },
+            {
+              id: 3,
+              day: 3,
+              tasks: [
+                { id: 1001, title: "HashMap 原理", completed: true },
+                { id: 1002, title: "TreeMap 对比", completed: true },
+              ],
+            },
+            {
+              id: 4,
+              day: 4,
+              tasks: [
+                { id: 1101, title: "PriorityQueue 堆", completed: true },
+                { id: 1102, title: "Deque 双端队列", completed: true },
+              ],
+            },
+            {
+              id: 5,
+              day: 5,
+              tasks: [
+                { id: 1201, title: "Set 接口与实现", completed: true },
+                { id: 1202, title: "HashSet vs TreeSet", completed: true },
+              ],
+            },
+            {
+              id: 6,
+              day: 6,
+              tasks: [
+                { id: 1301, title: "Iterator 迭代器", completed: false },
+                { id: 1302, title: "Collections 工具类", completed: false },
+              ],
+            },
+            {
+              id: 7,
+              day: 7,
+              tasks: [
+                { id: 1401, title: "泛型与类型擦除", completed: false },
+                {
+                  id: 1402,
+                  title: "Comparable & Comparator",
+                  completed: false,
+                },
+              ],
+            },
+            {
+              id: 8,
+              day: 8,
+              tasks: [
+                { id: 1501, title: "二叉树基础", completed: false },
+                { id: 1502, title: "前中后序遍历", completed: false },
+              ],
+            },
+            {
+              id: 9,
+              day: 9,
+              tasks: [
+                { id: 1601, title: "二叉搜索树", completed: false },
+                { id: 1602, title: "AVL 树概念", completed: false },
+              ],
+            },
+            {
+              id: 10,
+              day: 10,
+              tasks: [
+                { id: 1701, title: "红黑树原理", completed: false },
+                { id: 1702, title: "TreeMap 源码分析", completed: false },
+              ],
+            },
+            {
+              id: 11,
+              day: 11,
+              tasks: [
+                { id: 1801, title: "图的表示方法", completed: false },
+                { id: 1802, title: "BFS & DFS", completed: false },
+              ],
+            },
+            {
+              id: 12,
+              day: 12,
+              tasks: [
+                { id: 1901, title: "最短路径算法", completed: false },
+                { id: 1902, title: "Dijkstra 实现", completed: false },
+              ],
+            },
+            {
+              id: 13,
+              day: 13,
+              tasks: [
+                { id: 2001, title: "并查集", completed: false },
+                { id: 2002, title: "最小生成树", completed: false },
+              ],
+            },
+            {
+              id: 14,
+              day: 14,
+              tasks: [
+                { id: 2101, title: "字典树 Trie", completed: false },
+                { id: 2102, title: "线段树基础", completed: false },
+              ],
+            },
+            {
+              id: 15,
+              day: 15,
+              tasks: [
+                { id: 2201, title: "综合实战演练", completed: false },
+                { id: 2202, title: "数据结构总复习", completed: false },
+              ],
+            },
           ],
         },
         {
@@ -1179,41 +1302,71 @@
           totalDays: 7,
           active: false,
           days: [
-            { id: 1, day: 1, tasks: [
-              { id: 2301, title: "Goroutine 基础", completed: false },
-              { id: 2302, title: "Channel 通信", completed: false },
-            ]},
-            { id: 2, day: 2, tasks: [
-              { id: 2401, title: "Select 多路复用", completed: false },
-              { id: 2402, title: "Buffered Channel", completed: false },
-            ]},
-            { id: 3, day: 3, tasks: [
-              { id: 2501, title: "sync.Mutex 互斥锁", completed: false },
-              { id: 2502, title: "sync.WaitGroup", completed: false },
-            ]},
-            { id: 4, day: 4, tasks: [
-              { id: 2601, title: "Context 上下文", completed: false },
-              { id: 2602, title: "超时控制模式", completed: false },
-            ]},
-            { id: 5, day: 5, tasks: [
-              { id: 2701, title: "Worker Pool 模式", completed: false },
-              { id: 2702, title: "Fan-in/Fan-out", completed: false },
-            ]},
-            { id: 6, day: 6, tasks: [
-              { id: 2801, title: "Pipeline 模式", completed: false },
-              { id: 2802, title: "错误处理与恢复", completed: false },
-            ]},
-            { id: 7, day: 7, tasks: [
-              { id: 2901, title: "并发安全的数据结构", completed: false },
-              { id: 2902, title: "综合并发项目实战", completed: false },
-            ]},
+            {
+              id: 1,
+              day: 1,
+              tasks: [
+                { id: 2301, title: "Goroutine 基础", completed: false },
+                { id: 2302, title: "Channel 通信", completed: false },
+              ],
+            },
+            {
+              id: 2,
+              day: 2,
+              tasks: [
+                { id: 2401, title: "Select 多路复用", completed: false },
+                { id: 2402, title: "Buffered Channel", completed: false },
+              ],
+            },
+            {
+              id: 3,
+              day: 3,
+              tasks: [
+                { id: 2501, title: "sync.Mutex 互斥锁", completed: false },
+                { id: 2502, title: "sync.WaitGroup", completed: false },
+              ],
+            },
+            {
+              id: 4,
+              day: 4,
+              tasks: [
+                { id: 2601, title: "Context 上下文", completed: false },
+                { id: 2602, title: "超时控制模式", completed: false },
+              ],
+            },
+            {
+              id: 5,
+              day: 5,
+              tasks: [
+                { id: 2701, title: "Worker Pool 模式", completed: false },
+                { id: 2702, title: "Fan-in/Fan-out", completed: false },
+              ],
+            },
+            {
+              id: 6,
+              day: 6,
+              tasks: [
+                { id: 2801, title: "Pipeline 模式", completed: false },
+                { id: 2802, title: "错误处理与恢复", completed: false },
+              ],
+            },
+            {
+              id: 7,
+              day: 7,
+              tasks: [
+                { id: 2901, title: "并发安全的数据结构", completed: false },
+                { id: 2902, title: "综合并发项目实战", completed: false },
+              ],
+            },
           ],
         },
       ];
 
       // 计算某个计划已完成的天数（某天所有任务都完成 = 该天完成）
       function calcCompletedDays(plan) {
-        return plan.days.filter(day => day.tasks.length > 0 && day.tasks.every(t => t.completed)).length;
+        return plan.days.filter(
+          (day) => day.tasks.length > 0 && day.tasks.every((t) => t.completed),
+        ).length;
       }
 
       // --- Hardcoded Logic Data ---
@@ -1247,52 +1400,36 @@
 
       const featureMatrix = [
         {
-          id: "1",
-          theme: "card-theme-1",
-          icon: "📚",
-          title: "生成知识点",
-          desc: "AI为你量身生成知识点，含思维导图、深度解析与测验",
-          href: "knowledge-generate-preview.html",
-        },
-        {
           id: "2",
-          theme: "card-theme-2",
+          theme: "card-theme-1",
           icon: "🎬",
-          title: "K2V生成阵列",
+          title: "K2V 知识点视频生成",
           desc: "将枯燥知识点一键转化为活泼的精美解说视频",
           href: "k2v-preview.html",
         },
         {
           id: "3",
-          theme: "card-theme-3",
+          theme: "card-theme-2",
           icon: "🔍",
-          title: "代码逐帧 C2V",
-          desc: "上传任意代码段，自动推演逐行级可视化逻辑",
+          title: "C2V 编程题目解说",
+          desc: "由编程题目和答案自动生成易懂的逻辑讲解视频",
           href: "c2v-preview.html",
         },
         {
           id: "4",
-          theme: "card-theme-4",
+          theme: "card-theme-3",
           icon: "🧊",
-          title: "3D模型沙盒",
-          desc: "基于空间沉浸式的变量与数据结构3D互动区",
+          title: "3D 交互实验室",
+          desc: "通过自然语言实时操控算法模型在 3D 空间演示算法运行",
           href: "sandbox3d-preview.html",
         },
         {
           id: "5",
-          theme: "card-theme-5",
+          theme: "card-theme-4",
           icon: "📝",
           title: "错题本/收藏夹",
           desc: "智能收集错题与收藏题目，精准定位薄弱环节",
           href: "mistake-favorite-preview.html",
-        },
-        {
-          id: "6",
-          theme: "",
-          icon: "💻",
-          title: "在线编程 IDE",
-          desc: "自带丰富组件内嵌浏览器环境",
-          wip: true,
         },
       ];
 
@@ -1306,7 +1443,7 @@
         const switchDropdownRef = useRef(null);
 
         // 当前激活计划
-        const activePlan = plans.find(p => p.active);
+        const activePlan = plans.find((p) => p.active);
         // 当前计划的每日数据
         const currentPlanDays = activePlan ? activePlan.days : [];
 
@@ -1322,7 +1459,9 @@
           if (activePlan) {
             setPlanData(activePlan.days);
             const expanded = {};
-            activePlan.days.forEach(d => { expanded[d.id] = true; });
+            activePlan.days.forEach((d) => {
+              expanded[d.id] = true;
+            });
             setExpandedDays(expanded);
           }
         }, [activePlan?.id]);
@@ -1330,24 +1469,29 @@
         // 同步 planData 变更回 plans 状态，使进度条实时更新
         useEffect(() => {
           if (!activePlan) return;
-          setPlans(prev => prev.map(p =>
-            p.id === activePlan.id ? { ...p, days: planData } : p
-          ));
+          setPlans((prev) =>
+            prev.map((p) =>
+              p.id === activePlan.id ? { ...p, days: planData } : p,
+            ),
+          );
         }, [planData]);
 
         // localStorage 自动完成机制：检测从 knowledge-node 页面返回的完成信息
         const checkCompletedFromStorage = () => {
           try {
-            const raw = localStorage.getItem('completedTasks');
+            const raw = localStorage.getItem("completedTasks");
             if (!raw) return;
             const completedList = JSON.parse(raw); // [{dayId, taskId}, ...]
-            if (!Array.isArray(completedList) || completedList.length === 0) return;
+            if (!Array.isArray(completedList) || completedList.length === 0)
+              return;
 
-            setPlanData(prevData => {
+            setPlanData((prevData) => {
               let changed = false;
-              const newData = prevData.map(day => {
-                const updatedTasks = day.tasks.map(t => {
-                  const found = completedList.find(c => c.dayId === day.id && c.taskId === t.id);
+              const newData = prevData.map((day) => {
+                const updatedTasks = day.tasks.map((t) => {
+                  const found = completedList.find(
+                    (c) => c.dayId === day.id && c.taskId === t.id,
+                  );
                   if (found && !t.completed) {
                     changed = true;
                     return { ...t, completed: true };
@@ -1360,7 +1504,7 @@
             });
 
             // 清除已处理的数据
-            localStorage.removeItem('completedTasks');
+            localStorage.removeItem("completedTasks");
           } catch (e) {
             // ignore
           }
@@ -1372,41 +1516,47 @@
 
           // 页面重新可见时也检查（如从 knowledge-node 页面切回来）
           const handleVisibility = () => {
-            if (document.visibilityState === 'visible') {
+            if (document.visibilityState === "visible") {
               checkCompletedFromStorage();
             }
           };
-          document.addEventListener('visibilitychange', handleVisibility);
+          document.addEventListener("visibilitychange", handleVisibility);
 
           // 监听 storage 事件（同源不同 tab 的情况）
           const handleStorage = (e) => {
-            if (e.key === 'completedTasks') {
+            if (e.key === "completedTasks") {
               checkCompletedFromStorage();
             }
           };
-          window.addEventListener('storage', handleStorage);
+          window.addEventListener("storage", handleStorage);
 
           return () => {
-            document.removeEventListener('visibilitychange', handleVisibility);
-            window.removeEventListener('storage', handleStorage);
+            document.removeEventListener("visibilitychange", handleVisibility);
+            window.removeEventListener("storage", handleStorage);
           };
         }, []);
 
         // 切换计划
         const handleSwitchPlan = (planId) => {
-          setPlans(prev => prev.map(p => ({ ...p, active: p.id === planId })));
+          setPlans((prev) =>
+            prev.map((p) => ({ ...p, active: p.id === planId })),
+          );
           setShowSwitchDropdown(false);
         };
 
         // 点击外部关闭下拉
         useEffect(() => {
           const handleClickOutside = (e) => {
-            if (switchDropdownRef.current && !switchDropdownRef.current.contains(e.target)) {
+            if (
+              switchDropdownRef.current &&
+              !switchDropdownRef.current.contains(e.target)
+            ) {
               setShowSwitchDropdown(false);
             }
           };
           document.addEventListener("mousedown", handleClickOutside);
-          return () => document.removeEventListener("mousedown", handleClickOutside);
+          return () =>
+            document.removeEventListener("mousedown", handleClickOutside);
         }, []);
 
         // --- New Modals & Profile State ---
@@ -1559,7 +1709,9 @@
           <div className="app-viewport">
             {/* 演示状态切换开关 */}
             <div className="demo-toggle" onClick={() => setHasPlans(!hasPlans)}>
-              <div className={`demo-toggle-dot ${hasPlans ? "has-plans" : "no-plans"}`}></div>
+              <div
+                className={`demo-toggle-dot ${hasPlans ? "has-plans" : "no-plans"}`}
+              ></div>
               <span>演示：{hasPlans ? "有计划" : "无计划"}</span>
             </div>
 
@@ -1640,48 +1792,145 @@
               {/* === 计划管理工具栏 === */}
               {hasPlans && activePlan && (
                 <div className="plan-toolbar">
-                  <div className="current-plan-indicator" style={{ flexDirection: "column", gap: "6px", padding: "10px 16px" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "10px", width: "100%" }}>
+                  <div
+                    className="current-plan-indicator"
+                    style={{
+                      flexDirection: "column",
+                      gap: "6px",
+                      padding: "10px 16px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                        width: "100%",
+                      }}
+                    >
                       <span className="plan-pin">📌</span>
                       <span className="plan-name">{activePlan.name}</span>
-                      <span className="plan-day-tag">Day {calcCompletedDays(activePlan)}/{activePlan.totalDays}</span>
+                      <span className="plan-day-tag">
+                        Day {calcCompletedDays(activePlan)}/
+                        {activePlan.totalDays}
+                      </span>
                     </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: "8px", width: "100%", paddingLeft: "26px" }}>
-                      <div style={{ flex: 1, height: "6px", borderRadius: "9999px", background: "rgba(var(--border-muted-rgb), 0.15)", overflow: "hidden" }}>
-                        <div style={{ height: "100%", borderRadius: "9999px", background: "linear-gradient(90deg, var(--orange) 0%, var(--yellow) 100%)", width: `${(calcCompletedDays(activePlan) / activePlan.totalDays) * 100}%`, transition: "width 0.4s ease" }}></div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        width: "100%",
+                        paddingLeft: "26px",
+                      }}
+                    >
+                      <div
+                        style={{
+                          flex: 1,
+                          height: "6px",
+                          borderRadius: "9999px",
+                          background: "rgba(var(--border-muted-rgb), 0.15)",
+                          overflow: "hidden",
+                        }}
+                      >
+                        <div
+                          style={{
+                            height: "100%",
+                            borderRadius: "9999px",
+                            background:
+                              "linear-gradient(90deg, var(--orange) 0%, var(--yellow) 100%)",
+                            width: `${(calcCompletedDays(activePlan) / activePlan.totalDays) * 100}%`,
+                            transition: "width 0.4s ease",
+                          }}
+                        ></div>
                       </div>
-                      <span style={{ fontSize: "11px", fontWeight: "700", color: "var(--brown-medium)", whiteSpace: "nowrap" }}>{Math.round((calcCompletedDays(activePlan) / activePlan.totalDays) * 100)}%</span>
+                      <span
+                        style={{
+                          fontSize: "11px",
+                          fontWeight: "700",
+                          color: "var(--brown-medium)",
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        {Math.round(
+                          (calcCompletedDays(activePlan) /
+                            activePlan.totalDays) *
+                            100,
+                        )}
+                        %
+                      </span>
                     </div>
                   </div>
                   <div className="plan-toolbar-actions">
-                    <button className="plan-action-btn create" onClick={() => window.location.href = './onboarding-modal-preview.html'}>
+                    <button
+                      className="plan-action-btn create"
+                      onClick={() =>
+                        (window.location.href =
+                          "./onboarding-modal-preview.html")
+                      }
+                    >
                       <span>➕</span> 新建计划
                     </button>
-                    <div className="switch-plan-wrapper" ref={switchDropdownRef}>
-                      <button className="plan-action-btn switch" onClick={() => setShowSwitchDropdown(!showSwitchDropdown)}>
+                    <div
+                      className="switch-plan-wrapper"
+                      ref={switchDropdownRef}
+                    >
+                      <button
+                        className="plan-action-btn switch"
+                        onClick={() =>
+                          setShowSwitchDropdown(!showSwitchDropdown)
+                        }
+                      >
                         <span>🔄</span> 切换计划
                       </button>
-                      <div className={`switch-plan-dropdown ${showSwitchDropdown ? "show" : ""}`}>
-                        {plans.map(plan => (
+                      <div
+                        className={`switch-plan-dropdown ${showSwitchDropdown ? "show" : ""}`}
+                      >
+                        {plans.map((plan) => (
                           <div
                             key={plan.id}
                             className={`switch-plan-item ${plan.active ? "active" : ""}`}
                             onClick={() => handleSwitchPlan(plan.id)}
                           >
                             <div className="plan-item-info">
-                              <div style={{ display: "flex", alignItems: "center" }}>
-                                <span className="plan-item-name">{plan.name}</span>
-                                <span className="plan-item-lang">{plan.language}</span>
+                              <div
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                }}
+                              >
+                                <span className="plan-item-name">
+                                  {plan.name}
+                                </span>
+                                <span className="plan-item-lang">
+                                  {plan.language}
+                                </span>
                               </div>
                               <div className="plan-item-progress-row">
                                 <div className="plan-item-progress-bar">
-                                  <div className="plan-item-progress-fill" style={{ width: `${(calcCompletedDays(plan) / plan.totalDays) * 100}%` }}></div>
+                                  <div
+                                    className="plan-item-progress-fill"
+                                    style={{
+                                      width: `${(calcCompletedDays(plan) / plan.totalDays) * 100}%`,
+                                    }}
+                                  ></div>
                                 </div>
-                                <span className="plan-item-progress-text">{calcCompletedDays(plan)}/{plan.totalDays}</span>
+                                <span className="plan-item-progress-text">
+                                  {calcCompletedDays(plan)}/{plan.totalDays}
+                                </span>
                               </div>
                             </div>
                             <div className="plan-item-check">
-                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                              <svg
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              >
                                 <polyline points="20 6 9 17 4 12" />
                               </svg>
                             </div>
@@ -1693,426 +1942,461 @@
                 </div>
               )}
 
-
               {/* === 空状态：无计划时 === */}
               {!hasPlans && (
                 <div className="empty-state">
                   <div className="empty-state-icon">🚀</div>
                   <h2 className="empty-state-title">还没有学习计划</h2>
                   <p className="empty-state-desc">
-                    创建你的第一个个性化学习计划，AI 将为你量身定制学习路线、知识点和每日任务
+                    创建你的第一个个性化学习计划，AI
+                    将为你量身定制学习路线、知识点和每日任务
                   </p>
-                  <button className="empty-state-cta" onClick={() => window.location.href = './onboarding-modal-preview.html'}>
+                  <button
+                    className="empty-state-cta"
+                    onClick={() =>
+                      (window.location.href = "./onboarding-modal-preview.html")
+                    }
+                  >
                     <span>🚀</span> 创建第一个学习计划
                   </button>
                 </div>
               )}
 
               {/* Shooting Star Vertical Journey — 仅有计划时显示 */}
-              {hasPlans && <section className="plan-section">
-                {planData.map((day, dIdx) => {
-                  const locked = checkIsLocked(day.id);
-                  const progress = getCompletionMetrics(day.id);
-                  const isExpanded = expandedDays[day.id];
-                  const isLastNode = dIdx === planData.length - 1;
+              {hasPlans && (
+                <section className="plan-section">
+                  {planData.map((day, dIdx) => {
+                    const locked = checkIsLocked(day.id);
+                    const progress = getCompletionMetrics(day.id);
+                    const isExpanded = expandedDays[day.id];
+                    const isLastNode = dIdx === planData.length - 1;
 
-                  return (
-                    <div key={day.id} className="day-row-wrap">
-                      {/* === 1. 点与线交织的连接线 (Timeline Connector) === */}
-                      {!isLastNode && (
-                        <div
-                          style={{
-                            position: "absolute",
-                            top: 84,
-                            left: 59,
-                            width: 2,
-                            bottom: "-24px",
-                            zIndex: 1,
-                          }}
-                        >
-                          {/* 节奏虚线轴 */}
+                    return (
+                      <div key={day.id} className="day-row-wrap">
+                        {/* === 1. 点与线交织的连接线 (Timeline Connector) === */}
+                        {!isLastNode && (
                           <div
                             style={{
-                              width: 2,
-                              height: "100%",
-                              margin: "0 auto",
-                              background:
-                                "repeating-linear-gradient(to bottom, var(--brown-light) 0, var(--brown-light) 6px, transparent 6px, transparent 14px)",
-                              opacity: locked ? 0.3 : 0.6,
-                            }}
-                          ></div>
-                          {/* 发光装饰点迹 (仅在之前已经开始旅程时才具有色彩) */}
-                          {!locked && (
-                            <>
-                              <div
-                                style={{
-                                  position: "absolute",
-                                  top: "30%",
-                                  left: -2,
-                                  width: 6,
-                                  height: 6,
-                                  borderRadius: "50%",
-                                  background: "var(--yellow)",
-                                  boxShadow:
-                                    "0 0 6px var(--yellow-light), 0 0 2px var(--yellow)",
-                                }}
-                              ></div>
-                              <div
-                                style={{
-                                  position: "absolute",
-                                  top: "70%",
-                                  left: -1.5,
-                                  width: 5,
-                                  height: 5,
-                                  borderRadius: "50%",
-                                  background: "var(--blue-light)",
-                                  boxShadow:
-                                    "0 0 6px var(--blue-lighter), 0 0 2px var(--blue)",
-                                }}
-                              ></div>
-                            </>
-                          )}
-                        </div>
-                      )}
-
-                      {/* === 2. 主体日历星星 === */}
-                      <div
-                        className={`star-anchor-col ${locked ? "locked" : ""}`}
-                        onClick={() => toggleDayExpansion(day.id)}
-                      >
-                        <div className="star-icon">
-                          {/* Mask & Gradient Filling Effect */}
-                          <div className="star-fill-mask">
-                            <div
-                              className="star-gradient-bg"
-                              style={{
-                                background:
-                                  locked || progress === 0
-                                    ? "radial-gradient(circle at 30% 30%, var(--surface-highlight) 0%, var(--surface-warm) 100%)"
-                                    : "radial-gradient(circle at 30% 30%, var(--yellow-lighter) 0%, var(--accent-warm) 100%)",
-                              }}
-                            ></div>
-                            <div
-                              className="star-fill-overlay"
-                              style={{
-                                height: `${progress * 100}%`,
-                                background:
-                                  "radial-gradient(circle at 50% 0%, var(--yellow-light) 0%, var(--accent-warning) 100%)",
-                                boxShadow:
-                                  "inset 0 2px 4px rgba(var(--white-rgb), 0.5)",
-                              }}
-                            ></div>
-                          </div>
-                          <svg
-                            className="star-svg-outline"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            strokeWidth="0.4"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            style={{
-                              filter:
-                                "drop-shadow(0px 1px 1px rgba(var(--white-rgb), 0.4))",
-                            }}
-                          >
-                            <defs>
-                              <linearGradient
-                                id={`star-border-grad-${day.id}`}
-                                x1="0%"
-                                y1="0%"
-                                x2="100%"
-                                y2="100%"
-                              >
-                                {locked ? (
-                                  <>
-                                    <stop
-                                      offset="0%"
-                                      stopColor="var(--surface-highlight)"
-                                      stopOpacity="0.8"
-                                    />
-                                    <stop
-                                      offset="100%"
-                                      stopColor="var(--border-strong)"
-                                      stopOpacity="0.5"
-                                    />
-                                  </>
-                                ) : (
-                                  <>
-                                    <stop
-                                      offset="0%"
-                                      stopColor="var(--yellow)"
-                                      stopOpacity="0.9"
-                                    />
-                                    <stop
-                                      offset="100%"
-                                      stopColor="var(--brown-gold)"
-                                      stopOpacity="0.6"
-                                    />
-                                  </>
-                                )}
-                              </linearGradient>
-                            </defs>
-                            <polygon
-                              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                              stroke={`url(#star-border-grad-${day.id})`}
-                            />
-                          </svg>
-                          <div className="star-inner-text">
-                            <span className="star-inner-day">Day</span>
-                            <span className="star-inner-num">{day.day}</span>
-                          </div>
-                        </div>
-                        <div className="day-label">Day {day.day}</div>
-                      </div>
-
-                      {/* === 3. 每个子任务专属动态流星尾巴区域 === */}
-                      <div
-                        className={`tails-and-tasks-area ${isExpanded ? "expanded" : ""}`}
-                      >
-                        {/* 绘制 SVG Tails (利用贝塞尔曲线) */}
-                        {isExpanded && (
-                          <svg
-                            width="100%"
-                            height="100%"
-                            style={{
                               position: "absolute",
-                              top: 28,
-                              left: 0,
-                              overflow: "visible",
-                              pointerEvents: "none",
-                              zIndex: 0,
+                              top: 84,
+                              left: 59,
+                              width: 2,
+                              bottom: "-24px",
+                              zIndex: 1,
                             }}
                           >
-                            <defs>
-                              <filter
-                                id="glow-blur"
-                                x="-20%"
-                                y="-20%"
-                                width="140%"
-                                height="140%"
-                              >
-                                <feGaussianBlur
-                                  stdDeviation="3"
-                                  result="blur"
-                                />
-                                <feComposite
-                                  in="SourceGraphic"
-                                  in2="blur"
-                                  operator="over"
-                                />
-                              </filter>
-                              <linearGradient
-                                id={`grad-active`}
-                                x1="0%"
-                                y1="0%"
-                                x2="100%"
-                                y2="0%"
-                              >
-                                <stop
-                                  offset="0%"
-                                  stopColor="var(--yellow)"
-                                  stopOpacity="0"
-                                />
-                                <stop offset="30%" stopColor="var(--yellow)" />
-                                <stop
-                                  offset="55%"
-                                  stopColor="var(--yellow-lighter)"
-                                />
-                                <stop
-                                  offset="100%"
-                                  stopColor="var(--blue-light)"
-                                />
-                              </linearGradient>
-                              <linearGradient
-                                id={`grad-active-core`}
-                                x1="0%"
-                                y1="0%"
-                                x2="100%"
-                                y2="0%"
-                              >
-                                <stop
-                                  offset="0%"
-                                  stopColor="var(--yellow)"
-                                  stopOpacity="0"
-                                />
-                                <stop
-                                  offset="40%"
-                                  stopColor="var(--yellow-lighter)"
-                                />
-                                <stop
-                                  offset="80%"
-                                  stopColor="var(--blue-lighter)"
-                                />
-                                <stop
-                                  offset="100%"
-                                  stopColor="var(--blue-light)"
-                                />
-                              </linearGradient>
-                              <linearGradient
-                                id={`grad-success`}
-                                x1="0%"
-                                y1="0%"
-                                x2="100%"
-                                y2="0%"
-                              >
-                                <stop
-                                  offset="0%"
-                                  stopColor="var(--yellow)"
-                                  stopOpacity="0"
-                                />
-                                <stop offset="30%" stopColor="var(--yellow)" />
-                                <stop
-                                  offset="55%"
-                                  stopColor="var(--yellow-lighter)"
-                                />
-                                <stop
-                                  offset="100%"
-                                  stopColor="var(--blue-lighter)"
-                                />
-                              </linearGradient>
-                              <linearGradient
-                                id={`grad-success-core`}
-                                x1="0%"
-                                y1="0%"
-                                x2="100%"
-                                y2="0%"
-                              >
-                                <stop
-                                  offset="0%"
-                                  stopColor="var(--yellow)"
-                                  stopOpacity="0"
-                                />
-                                <stop
-                                  offset="40%"
-                                  stopColor="var(--yellow-lighter)"
-                                />
-                                <stop
-                                  offset="100%"
-                                  stopColor="var(--blue-mist)"
-                                />
-                              </linearGradient>
-                            </defs>
-
-                            {day.tasks.map((task, i) => {
-                              const startX = -10;
-                              const startY = 0; // 从星星中心高度出发
-                              const taskHeight = 52;
-                              const gap = 16;
-                              const targetY =
-                                i * (taskHeight + gap) + taskHeight / 2 - 10; // 指向 task 中心
-                              const endX = 76; // 让它刚好停留在胶囊的左侧边缘
-
-                              const pathCommand = `M ${startX},${startY} C ${startX + 40},${startY} ${endX - 30},${targetY} ${endX},${targetY}`;
-
-                              // 移除 Locked 状态下的灰色/虚线尾巴
-                              if (locked) {
-                                return null;
-                              }
-
-                              const glowColor = task.completed
-                                ? "url(#grad-success)"
-                                : "url(#grad-active)";
-                              const coreColor = task.completed
-                                ? "url(#grad-success-core)"
-                                : "url(#grad-active-core)";
-                              const headColor = task.completed
-                                ? "var(--blue-lighter)"
-                                : "var(--blue-light)";
-
-                              return (
-                                <g key={i}>
-                                  {/* 发光外层模糊路径 */}
-                                  <path
-                                    d={pathCommand}
-                                    fill="none"
-                                    stroke={glowColor}
-                                    strokeWidth="6"
-                                    strokeLinecap="round"
-                                    filter="url(#glow-blur)"
-                                    opacity="0.8"
-                                  />
-                                  {/* 高亮核心锐利路径 */}
-                                  <path
-                                    d={pathCommand}
-                                    fill="none"
-                                    stroke={coreColor}
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                  />
-                                  {/* 头部高亮 Flare */}
-                                  <circle
-                                    cx={endX}
-                                    cy={targetY}
-                                    r="2.5"
-                                    filter="url(#glow-blur)"
-                                    style={{
-                                      fill: 'var(--white)',
-                                      boxShadow: `0 0 10px ${headColor}`,
-                                    }}
-                                  />
-                                  <circle
-                                    cx={endX}
-                                    cy={targetY}
-                                    r="1.5"
-                                    style={{ fill: 'var(--white)' }}
-                                  />
-                                </g>
-                              );
-                            })}
-                          </svg>
+                            {/* 节奏虚线轴 */}
+                            <div
+                              style={{
+                                width: 2,
+                                height: "100%",
+                                margin: "0 auto",
+                                background:
+                                  "repeating-linear-gradient(to bottom, var(--brown-light) 0, var(--brown-light) 6px, transparent 6px, transparent 14px)",
+                                opacity: locked ? 0.3 : 0.6,
+                              }}
+                            ></div>
+                            {/* 发光装饰点迹 (仅在之前已经开始旅程时才具有色彩) */}
+                            {!locked && (
+                              <>
+                                <div
+                                  style={{
+                                    position: "absolute",
+                                    top: "30%",
+                                    left: -2,
+                                    width: 6,
+                                    height: 6,
+                                    borderRadius: "50%",
+                                    background: "var(--yellow)",
+                                    boxShadow:
+                                      "0 0 6px var(--yellow-light), 0 0 2px var(--yellow)",
+                                  }}
+                                ></div>
+                                <div
+                                  style={{
+                                    position: "absolute",
+                                    top: "70%",
+                                    left: -1.5,
+                                    width: 5,
+                                    height: 5,
+                                    borderRadius: "50%",
+                                    background: "var(--blue-light)",
+                                    boxShadow:
+                                      "0 0 6px var(--blue-lighter), 0 0 2px var(--blue)",
+                                  }}
+                                ></div>
+                              </>
+                            )}
+                          </div>
                         )}
 
-                        {/* 渲染子任务 Pill 实体 */}
+                        {/* === 2. 主体日历星星 === */}
                         <div
-                          style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "16px",
-                            paddingLeft: "80px",
-                            marginTop: "4px",
-                          }}
+                          className={`star-anchor-col ${locked ? "locked" : ""}`}
+                          onClick={() => toggleDayExpansion(day.id)}
                         >
-                          {day.tasks.map((task, idx) => {
-                            const isTaskLocked =
-                              locked ||
-                              (idx > 0 && !day.tasks[idx - 1].completed);
-                            let pillClass = `task-pill ${isTaskLocked ? "locked" : ""} ${task.completed ? "completed" : ""}`;
-
-                            return (
+                          <div className="star-icon">
+                            {/* Mask & Gradient Filling Effect */}
+                            <div className="star-fill-mask">
                               <div
-                                key={task.id}
-                                className={pillClass}
-                                style={{ cursor: isTaskLocked || task.completed ? (isTaskLocked ? "not-allowed" : "default") : "pointer" }}
-                              >
-                                <div className="circle-indicator" style={{ pointerEvents: "none" }}></div>
-                                {isTaskLocked ? (
-                                  <span>{task.title}</span>
-                                ) : (
-                                  <a
-                                    href={`knowledge-node-preview.html?dayId=${day.id}&taskId=${task.id}&title=${encodeURIComponent(task.title)}`}
-                                    style={{
-                                      color: "inherit",
-                                      textDecoration: "none",
-                                      borderBottom: task.completed ? "1.5px dashed var(--blue-light)" : "1.5px dashed var(--brown-light)",
-                                      paddingBottom: "1px",
-                                      transition: "border-color 0.2s ease",
-                                    }}
-                                    onMouseOver={(e) => { e.currentTarget.style.borderBottomColor = task.completed ? "var(--blue)" : "var(--orange)"; }}
-                                    onMouseOut={(e) => { e.currentTarget.style.borderBottomColor = task.completed ? "var(--blue-light)" : "var(--brown-light)"; }}
-                                  >
-                                    {task.title}
-                                  </a>
-                                )}
-                              </div>
-                            );
-                          })}
+                                className="star-gradient-bg"
+                                style={{
+                                  background:
+                                    locked || progress === 0
+                                      ? "radial-gradient(circle at 30% 30%, var(--surface-highlight) 0%, var(--surface-warm) 100%)"
+                                      : "radial-gradient(circle at 30% 30%, var(--yellow-lighter) 0%, var(--accent-warm) 100%)",
+                                }}
+                              ></div>
+                              <div
+                                className="star-fill-overlay"
+                                style={{
+                                  height: `${progress * 100}%`,
+                                  background:
+                                    "radial-gradient(circle at 50% 0%, var(--yellow-light) 0%, var(--accent-warning) 100%)",
+                                  boxShadow:
+                                    "inset 0 2px 4px rgba(var(--white-rgb), 0.5)",
+                                }}
+                              ></div>
+                            </div>
+                            <svg
+                              className="star-svg-outline"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              strokeWidth="0.4"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              style={{
+                                filter:
+                                  "drop-shadow(0px 1px 1px rgba(var(--white-rgb), 0.4))",
+                              }}
+                            >
+                              <defs>
+                                <linearGradient
+                                  id={`star-border-grad-${day.id}`}
+                                  x1="0%"
+                                  y1="0%"
+                                  x2="100%"
+                                  y2="100%"
+                                >
+                                  {locked ? (
+                                    <>
+                                      <stop
+                                        offset="0%"
+                                        stopColor="var(--surface-highlight)"
+                                        stopOpacity="0.8"
+                                      />
+                                      <stop
+                                        offset="100%"
+                                        stopColor="var(--border-strong)"
+                                        stopOpacity="0.5"
+                                      />
+                                    </>
+                                  ) : (
+                                    <>
+                                      <stop
+                                        offset="0%"
+                                        stopColor="var(--yellow)"
+                                        stopOpacity="0.9"
+                                      />
+                                      <stop
+                                        offset="100%"
+                                        stopColor="var(--brown-gold)"
+                                        stopOpacity="0.6"
+                                      />
+                                    </>
+                                  )}
+                                </linearGradient>
+                              </defs>
+                              <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                                stroke={`url(#star-border-grad-${day.id})`}
+                              />
+                            </svg>
+                            <div className="star-inner-text">
+                              <span className="star-inner-day">Day</span>
+                              <span className="star-inner-num">{day.day}</span>
+                            </div>
+                          </div>
+                          <div className="day-label">Day {day.day}</div>
+                        </div>
+
+                        {/* === 3. 每个子任务专属动态流星尾巴区域 === */}
+                        <div
+                          className={`tails-and-tasks-area ${isExpanded ? "expanded" : ""}`}
+                        >
+                          {/* 绘制 SVG Tails (利用贝塞尔曲线) */}
+                          {isExpanded && (
+                            <svg
+                              width="100%"
+                              height="100%"
+                              style={{
+                                position: "absolute",
+                                top: 28,
+                                left: 0,
+                                overflow: "visible",
+                                pointerEvents: "none",
+                                zIndex: 0,
+                              }}
+                            >
+                              <defs>
+                                <filter
+                                  id="glow-blur"
+                                  x="-20%"
+                                  y="-20%"
+                                  width="140%"
+                                  height="140%"
+                                >
+                                  <feGaussianBlur
+                                    stdDeviation="3"
+                                    result="blur"
+                                  />
+                                  <feComposite
+                                    in="SourceGraphic"
+                                    in2="blur"
+                                    operator="over"
+                                  />
+                                </filter>
+                                <linearGradient
+                                  id={`grad-active`}
+                                  x1="0%"
+                                  y1="0%"
+                                  x2="100%"
+                                  y2="0%"
+                                >
+                                  <stop
+                                    offset="0%"
+                                    stopColor="var(--yellow)"
+                                    stopOpacity="0"
+                                  />
+                                  <stop
+                                    offset="30%"
+                                    stopColor="var(--yellow)"
+                                  />
+                                  <stop
+                                    offset="55%"
+                                    stopColor="var(--yellow-lighter)"
+                                  />
+                                  <stop
+                                    offset="100%"
+                                    stopColor="var(--blue-light)"
+                                  />
+                                </linearGradient>
+                                <linearGradient
+                                  id={`grad-active-core`}
+                                  x1="0%"
+                                  y1="0%"
+                                  x2="100%"
+                                  y2="0%"
+                                >
+                                  <stop
+                                    offset="0%"
+                                    stopColor="var(--yellow)"
+                                    stopOpacity="0"
+                                  />
+                                  <stop
+                                    offset="40%"
+                                    stopColor="var(--yellow-lighter)"
+                                  />
+                                  <stop
+                                    offset="80%"
+                                    stopColor="var(--blue-lighter)"
+                                  />
+                                  <stop
+                                    offset="100%"
+                                    stopColor="var(--blue-light)"
+                                  />
+                                </linearGradient>
+                                <linearGradient
+                                  id={`grad-success`}
+                                  x1="0%"
+                                  y1="0%"
+                                  x2="100%"
+                                  y2="0%"
+                                >
+                                  <stop
+                                    offset="0%"
+                                    stopColor="var(--yellow)"
+                                    stopOpacity="0"
+                                  />
+                                  <stop
+                                    offset="30%"
+                                    stopColor="var(--yellow)"
+                                  />
+                                  <stop
+                                    offset="55%"
+                                    stopColor="var(--yellow-lighter)"
+                                  />
+                                  <stop
+                                    offset="100%"
+                                    stopColor="var(--blue-lighter)"
+                                  />
+                                </linearGradient>
+                                <linearGradient
+                                  id={`grad-success-core`}
+                                  x1="0%"
+                                  y1="0%"
+                                  x2="100%"
+                                  y2="0%"
+                                >
+                                  <stop
+                                    offset="0%"
+                                    stopColor="var(--yellow)"
+                                    stopOpacity="0"
+                                  />
+                                  <stop
+                                    offset="40%"
+                                    stopColor="var(--yellow-lighter)"
+                                  />
+                                  <stop
+                                    offset="100%"
+                                    stopColor="var(--blue-mist)"
+                                  />
+                                </linearGradient>
+                              </defs>
+
+                              {day.tasks.map((task, i) => {
+                                const startX = -10;
+                                const startY = 0; // 从星星中心高度出发
+                                const taskHeight = 52;
+                                const gap = 16;
+                                const targetY =
+                                  i * (taskHeight + gap) + taskHeight / 2 - 10; // 指向 task 中心
+                                const endX = 76; // 让它刚好停留在胶囊的左侧边缘
+
+                                const pathCommand = `M ${startX},${startY} C ${startX + 40},${startY} ${endX - 30},${targetY} ${endX},${targetY}`;
+
+                                // 移除 Locked 状态下的灰色/虚线尾巴
+                                if (locked) {
+                                  return null;
+                                }
+
+                                const glowColor = task.completed
+                                  ? "url(#grad-success)"
+                                  : "url(#grad-active)";
+                                const coreColor = task.completed
+                                  ? "url(#grad-success-core)"
+                                  : "url(#grad-active-core)";
+                                const headColor = task.completed
+                                  ? "var(--blue-lighter)"
+                                  : "var(--blue-light)";
+
+                                return (
+                                  <g key={i}>
+                                    {/* 发光外层模糊路径 */}
+                                    <path
+                                      d={pathCommand}
+                                      fill="none"
+                                      stroke={glowColor}
+                                      strokeWidth="6"
+                                      strokeLinecap="round"
+                                      filter="url(#glow-blur)"
+                                      opacity="0.8"
+                                    />
+                                    {/* 高亮核心锐利路径 */}
+                                    <path
+                                      d={pathCommand}
+                                      fill="none"
+                                      stroke={coreColor}
+                                      strokeWidth="2"
+                                      strokeLinecap="round"
+                                    />
+                                    {/* 头部高亮 Flare */}
+                                    <circle
+                                      cx={endX}
+                                      cy={targetY}
+                                      r="2.5"
+                                      filter="url(#glow-blur)"
+                                      style={{
+                                        fill: "var(--white)",
+                                        boxShadow: `0 0 10px ${headColor}`,
+                                      }}
+                                    />
+                                    <circle
+                                      cx={endX}
+                                      cy={targetY}
+                                      r="1.5"
+                                      style={{ fill: "var(--white)" }}
+                                    />
+                                  </g>
+                                );
+                              })}
+                            </svg>
+                          )}
+
+                          {/* 渲染子任务 Pill 实体 */}
+                          <div
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: "16px",
+                              paddingLeft: "80px",
+                              marginTop: "4px",
+                            }}
+                          >
+                            {day.tasks.map((task, idx) => {
+                              const isTaskLocked =
+                                locked ||
+                                (idx > 0 && !day.tasks[idx - 1].completed);
+                              let pillClass = `task-pill ${isTaskLocked ? "locked" : ""} ${task.completed ? "completed" : ""}`;
+
+                              return (
+                                <div
+                                  key={task.id}
+                                  className={pillClass}
+                                  style={{
+                                    cursor:
+                                      isTaskLocked || task.completed
+                                        ? isTaskLocked
+                                          ? "not-allowed"
+                                          : "default"
+                                        : "pointer",
+                                  }}
+                                >
+                                  <div
+                                    className="circle-indicator"
+                                    style={{ pointerEvents: "none" }}
+                                  ></div>
+                                  {isTaskLocked ? (
+                                    <span>{task.title}</span>
+                                  ) : (
+                                    <a
+                                      href={`knowledge-node-preview.html?dayId=${day.id}&taskId=${task.id}&title=${encodeURIComponent(task.title)}`}
+                                      style={{
+                                        color: "inherit",
+                                        textDecoration: "none",
+                                        borderBottom: task.completed
+                                          ? "1.5px dashed var(--blue-light)"
+                                          : "1.5px dashed var(--brown-light)",
+                                        paddingBottom: "1px",
+                                        transition: "border-color 0.2s ease",
+                                      }}
+                                      onMouseOver={(e) => {
+                                        e.currentTarget.style.borderBottomColor =
+                                          task.completed
+                                            ? "var(--blue)"
+                                            : "var(--orange)";
+                                      }}
+                                      onMouseOut={(e) => {
+                                        e.currentTarget.style.borderBottomColor =
+                                          task.completed
+                                            ? "var(--blue-light)"
+                                            : "var(--brown-light)";
+                                      }}
+                                    >
+                                      {task.title}
+                                    </a>
+                                  )}
+                                </div>
+                              );
+                            })}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </section>}
+                    );
+                  })}
+                </section>
+              )}
 
               {/* Feature Matrix Enhanced Colors */}
               <section className="features-section">
@@ -2121,7 +2405,10 @@
                     <div
                       key={feat.id}
                       className={`feature-card ${feat.theme} ${feat.wip ? "disabled" : ""}`}
-                      onClick={() => { if (feat.href && !feat.wip) window.location.href = feat.href; }}
+                      onClick={() => {
+                        if (feat.href && !feat.wip)
+                          window.location.href = feat.href;
+                      }}
                     >
                       <div className="feature-icon-wrapper">{feat.icon}</div>
                       <div
@@ -2172,7 +2459,8 @@
                     height: "100px",
                     background:
                       "linear-gradient(135deg, rgba(var(--yellow-light-rgb),0.3) 0%, rgba(var(--orange-warm-rgb), 0.3) 100%)",
-                    borderBottom: "1px solid rgba(var(--border-muted-rgb), 0.1)",
+                    borderBottom:
+                      "1px solid rgba(var(--border-muted-rgb), 0.1)",
                     zIndex: 0,
                     overflow: "hidden",
                   }}
@@ -2434,7 +2722,8 @@
                       background:
                         "linear-gradient(135deg, var(--orange-mist) 0%, var(--chat-orange-accent) 100%)",
                       borderRadius: "12px",
-                      boxShadow: "0 2px 8px rgba(var(--orange-light-rgb), 0.25)",
+                      boxShadow:
+                        "0 2px 8px rgba(var(--orange-light-rgb), 0.25)",
                       border: "1px solid rgba(var(--orange-light-rgb), 0.4)",
                       display: "flex",
                       flexDirection: "row",
@@ -2588,8 +2877,10 @@
                     style={{
                       flex: 1,
                       height: "44px",
-                      background: "linear-gradient(135deg, var(--green-mist) 0%, var(--green-lighter) 100%)",
-                      border: "1.5px solid rgba(var(--green-lightest-rgb), 0.5)",
+                      background:
+                        "linear-gradient(135deg, var(--green-mist) 0%, var(--green-lighter) 100%)",
+                      border:
+                        "1.5px solid rgba(var(--green-lightest-rgb), 0.5)",
                       borderRadius: "14px",
                       display: "flex",
                       alignItems: "center",
@@ -2598,7 +2889,8 @@
                       fontSize: "13px",
                       fontWeight: "800",
                       color: "var(--brown-dark)",
-                      boxShadow: "0 4px 8px rgba(var(--border-muted-rgb), 0.15)",
+                      boxShadow:
+                        "0 4px 8px rgba(var(--border-muted-rgb), 0.15)",
                       cursor: "pointer",
                       transition: "transform 0.2s",
                     }}
@@ -2610,7 +2902,8 @@
                     style={{
                       flex: 1,
                       height: "44px",
-                      background: "linear-gradient(135deg, var(--yellow-mist) 0%, var(--yellow-light) 100%)",
+                      background:
+                        "linear-gradient(135deg, var(--yellow-mist) 0%, var(--yellow-light) 100%)",
                       border: "1px solid rgba(var(--yellow-rgb), 0.4)",
                       borderRadius: "14px",
                       display: "flex",
@@ -2897,7 +3190,8 @@
                         top: "20px",
                         right: "20px",
                         background: "var(--bg-canvas)",
-                        border: "1.5px solid rgba(var(--border-muted-rgb), 0.25)",
+                        border:
+                          "1.5px solid rgba(var(--border-muted-rgb), 0.25)",
                         borderRadius: "50%",
                         width: "36px",
                         height: "36px",
@@ -2905,7 +3199,8 @@
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        boxShadow: "0 2px 8px rgba(var(--border-muted-rgb), 0.15)",
+                        boxShadow:
+                          "0 2px 8px rgba(var(--border-muted-rgb), 0.15)",
                         transition: "all 0.2s ease",
                         zIndex: 10,
                       }}
@@ -3101,7 +3396,8 @@
                               padding: "14px 16px",
                               background: "var(--orange-mist)",
                               borderRadius: "14px",
-                              border: "1px solid rgba(var(--orange-light-rgb), 0.3)",
+                              border:
+                                "1px solid rgba(var(--orange-light-rgb), 0.3)",
                             }}
                           >
                             <div
@@ -3184,7 +3480,8 @@
                               padding: "14px 16px",
                               background: "var(--blue-mist)",
                               borderRadius: "14px",
-                              border: "1px solid rgba(var(--blue-light-rgb), 0.3)",
+                              border:
+                                "1px solid rgba(var(--blue-light-rgb), 0.3)",
                             }}
                           >
                             <div
@@ -3326,7 +3623,8 @@
                               padding: "14px 16px",
                               background: "var(--orange-mist)",
                               borderRadius: "14px",
-                              border: "1px solid rgba(var(--orange-light-rgb), 0.3)",
+                              border:
+                                "1px solid rgba(var(--orange-light-rgb), 0.3)",
                             }}
                           >
                             <div
@@ -3617,7 +3915,8 @@
                         top: "20px",
                         right: "20px",
                         background: "var(--bg-canvas)",
-                        border: "1.5px solid rgba(var(--border-muted-rgb), 0.25)",
+                        border:
+                          "1.5px solid rgba(var(--border-muted-rgb), 0.25)",
                         borderRadius: "50%",
                         width: "36px",
                         height: "36px",
@@ -3625,7 +3924,8 @@
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        boxShadow: "0 2px 8px rgba(var(--border-muted-rgb), 0.15)",
+                        boxShadow:
+                          "0 2px 8px rgba(var(--border-muted-rgb), 0.15)",
                         transition: "all 0.2s ease",
                         zIndex: 10,
                       }}
@@ -4022,7 +4322,16 @@
                             color: "var(--brown-medium)",
                           }}
                         >
-                          个人简介<span style={{ fontWeight: "400", color: "var(--brown-light)", marginLeft: "4px" }}>（选填）</span>
+                          个人简介
+                          <span
+                            style={{
+                              fontWeight: "400",
+                              color: "var(--brown-light)",
+                              marginLeft: "4px",
+                            }}
+                          >
+                            （选填）
+                          </span>
                         </label>
                         <textarea
                           value={profileData.bio}
@@ -4161,7 +4470,8 @@
                         top: "20px",
                         right: "20px",
                         background: "var(--bg-canvas)",
-                        border: "1.5px solid rgba(var(--border-muted-rgb), 0.25)",
+                        border:
+                          "1.5px solid rgba(var(--border-muted-rgb), 0.25)",
                         borderRadius: "50%",
                         width: "36px",
                         height: "36px",
@@ -4169,7 +4479,8 @@
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        boxShadow: "0 2px 8px rgba(var(--border-muted-rgb), 0.15)",
+                        boxShadow:
+                          "0 2px 8px rgba(var(--border-muted-rgb), 0.15)",
                         transition: "all 0.2s ease",
                         zIndex: 10,
                       }}
@@ -4270,58 +4581,60 @@
                       ].map((d, i) => {
                         const isDone = d.done || (d.today && checkinDone);
                         return (
-                        <div
-                          key={i}
-                          style={{
-                            width: "48px",
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            gap: "4px",
-                            padding: "8px 4px",
-                            borderRadius: "14px",
-                            background: isDone
-                              ? "var(--success-bg)"
-                              : d.today
-                                ? "var(--yellow-lighter)"
-                                : "var(--bg-canvas)",
-                            border: (d.today && !checkinDone)
-                              ? "2px solid var(--yellow)"
-                              : isDone
-                                ? "2px solid rgba(var(--success-text-rgb),0.28)"
-                                : "1.5px solid rgba(var(--border-muted-rgb), 0.15)",
-                            boxShadow: (d.today && !checkinDone)
-                              ? "0 0 0 3px rgba(var(--yellow-rgb), 0.18)"
-                              : "none",
-                            transition: "all 0.2s",
-                          }}
-                        >
-                          <span
+                          <div
+                            key={i}
                             style={{
-                              fontSize: "11px",
-                              fontWeight: "700",
-                              color: isDone
-                                ? "var(--success-text)"
-                                : "var(--brown-medium)",
+                              width: "48px",
+                              display: "flex",
+                              flexDirection: "column",
+                              alignItems: "center",
+                              gap: "4px",
+                              padding: "8px 4px",
+                              borderRadius: "14px",
+                              background: isDone
+                                ? "var(--success-bg)"
+                                : d.today
+                                  ? "var(--yellow-lighter)"
+                                  : "var(--bg-canvas)",
+                              border:
+                                d.today && !checkinDone
+                                  ? "2px solid var(--yellow)"
+                                  : isDone
+                                    ? "2px solid rgba(var(--success-text-rgb),0.28)"
+                                    : "1.5px solid rgba(var(--border-muted-rgb), 0.15)",
+                              boxShadow:
+                                d.today && !checkinDone
+                                  ? "0 0 0 3px rgba(var(--yellow-rgb), 0.18)"
+                                  : "none",
+                              transition: "all 0.2s",
                             }}
                           >
-                            周{d.day}
-                          </span>
-                          <span style={{ fontSize: "14px" }}>
-                            {isDone ? "✅" : "🪙"}
-                          </span>
-                          <span
-                            style={{
-                              fontSize: "10px",
-                              fontWeight: "700",
-                              color: d.bonus
-                                ? "var(--orange)"
-                                : "var(--brown-dark)",
-                            }}
-                          >
-                            +{d.coin}
-                          </span>
-                        </div>
+                            <span
+                              style={{
+                                fontSize: "11px",
+                                fontWeight: "700",
+                                color: isDone
+                                  ? "var(--success-text)"
+                                  : "var(--brown-medium)",
+                              }}
+                            >
+                              周{d.day}
+                            </span>
+                            <span style={{ fontSize: "14px" }}>
+                              {isDone ? "✅" : "🪙"}
+                            </span>
+                            <span
+                              style={{
+                                fontSize: "10px",
+                                fontWeight: "700",
+                                color: d.bonus
+                                  ? "var(--orange)"
+                                  : "var(--brown-dark)",
+                              }}
+                            >
+                              +{d.coin}
+                            </span>
+                          </div>
                         );
                       })}
                     </div>
